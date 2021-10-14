@@ -29,6 +29,7 @@
                             <th scope="col">Foto 1</th>
                             <th scope="col">Foto 2</th>
                             <th scope="col">Foto 3</th>
+                            <th scope="col" >Deskripsi</th>
                             <th scope="col">Metode Penjualan</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Hari Kerja Mulai</th>
@@ -52,6 +53,7 @@
                           <td>{{ $t->foto_1 }}</td>
                           <td>{{ $t->foto_2 }}</td>
                           <td>{{ $t->foto_3 }}</td>
+                          <td>{{ $t->deskripsi }}</td>
                           <td>{{ $t->metode_penjualan }}</td>
                           <td>{{ $t->harga }}</td>
                           <td>{{ $t->hari_kerja_mulai }}</td>
