@@ -93,6 +93,7 @@ class TokoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $validatedData = $request->validate([
             'nama_toko' => 'required|max:255',
             'nama_pemilik' => 'required|max:255',
