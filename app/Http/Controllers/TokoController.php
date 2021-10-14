@@ -28,7 +28,7 @@ class TokoController extends Controller
      */
     public function store(Request $request)
     {
-        $y = $request->validate([
+        $validatedData = $request->validate([
             'nama_toko' => 'required|max:255',
             'nama_pemilik' => 'required|max:255',
             'alamat' => 'required',
@@ -49,7 +49,7 @@ class TokoController extends Controller
         ]);
 
         // $foto1 = $request->file('foto_1')->store('/public/img');
-        Toko::create($y);
+        Toko::create($validatedData);
         // Toko::create([
         //     'nama_toko' => $request->nama_toko,
         //     'nama_pemilik' => $request->nama_pemilik,
@@ -93,6 +93,8 @@ class TokoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+
         Toko::find($id)->update([
             'nama_toko' => $request->nama_toko,
             'nama_pemilik' => $request->nama_pemilik,

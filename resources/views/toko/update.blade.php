@@ -62,20 +62,82 @@
                                 <input type="text" class="form-control" id="foto_3" name="foto_3" placeholder="{{ $toko->foto_3 }}" value="{{ $toko->foto_3 }}">
                             </div>
                             <div class="mb-3">
-                                <label for="metode_penjualan" class="form-label">metode_penjualan</label>
-                                <input type="text" class="form-control" id="metode_penjualan" name="metode_penjualan" placeholder="{{ $toko->metode_penjualan }}" value="{{ $toko->metode_penjualan }}">
+                                <label for="deskripsi" class="form-label">deskripsi</label>
+                                <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder="masukkan deskripsi" value="{{ $toko->deskripsi }}">
+                                @error('deskripsi')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+                            <div class="mb-3">
+                                <label for="metode_penjualan" class="form-label">metode_penjualan</label>
+                                <select class="form-select  @error('metode_penjualan') is-invalid @enderror" id="metode_penjualan" name="metode_penjualan">
+                                    <option selected value="{{ $toko->metode_penjualan }}">{{ $toko->metode_penjualan }}</option>
+                                    <option value="Kiloan">Kiloan</option>
+                                    <option value="Bijian">Bijian</option>
+                                </select>
+                                @error('metode_penjualan')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+
                             <div class="mb-3">
                                 <label for="harga" class="form-label">harga</label>
                                 <input type="text" class="form-control" id="harga" name="harga" placeholder="{{ $toko->harga }}" value="{{ $toko->harga }}">
                             </div>
+                            <label for="hari_kerja_mulai" class="form-label">hari_kerja</label>
+                            <select class="form-select mb-3 @error('hari_kerja_mulai') is-invalid @enderror" id="hari_kerja_mulai" name="hari_kerja_mulai">
+                                <option selected value="{{ $toko->hari_kerja_mulai }}">{{ $toko->hari_kerja_mulai }}</option>
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                                <option value="Jum'at">Jum'at</option>
+                                <option value="Sabtu">Sabtu</option>
+                                <option value="Minggu">Minggu</option>
+                            </select>
+                            @error('hari_kerja_mulai')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <select class="form-select mb-3 @error('hari_kerja_sampai') is-invalid @enderror" id="hari_kerja_sampai" name="hari_kerja_sampai">
+                                <option selected value="{{ $toko->hari_kerja_sampai }}">{{ $toko->hari_kerja_sampai }}</option>
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                                <option value="Jum'at">Jum'at</option>
+                                <option value="Sabtu">Sabtu</option>
+                                <option value="Minggu">Minggu</option>
+                            </select>
+                            @error('hari_kerja_sampai')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
                             <div class="mb-3">
-                                <label for="hari_kerja" class="form-label">hari_kerja</label>
-                                <input type="text" class="form-control" id="hari_kerja" name="hari_kerja" placeholder="{{ $toko->hari_kerja }}" value="{{ $toko->hari_kerja }}">
+                                <label for="jam_buka_mulai" class="form-label">jam_tutup</label>
+                                <input type="text" class="form-control @error('jam_buka_mulai') is-invalid @enderror" id="jam_buka_mulai" name="jam_buka_mulai" placeholder="07:00 WIB" value="{{ $toko->jam_buka_mulai }}">
+                                @error('jam_buka_mulai')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="jam_buka" class="form-label">jam_buka</label>
-                                <input type="text" class="form-control" id="jam_buka" name="jam_buka" placeholder="{{ $toko->jam_buka }}" value="{{ $toko->jam_buka }}">
+                                <label for="jam_buka_sampai" class="form-label">jam_buka_sampai</label>
+                                <input type="text" class="form-control @error('jam_buka_sampai') is-invalid @enderror" id="jam_buka_sampai" name="jam_buka_sampai" placeholder="18:00 WIB" value="{{ $toko->jam_buka_sampai }}">
+                                @error('jam_buka_sampai')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Kirim</button>
                         </form>

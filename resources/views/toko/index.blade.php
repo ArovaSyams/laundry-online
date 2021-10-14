@@ -251,7 +251,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="jam_buka_sampai" class="form-label">jam_buka_sampai</label>
+                                <label for="jam_buka_sampai" class="form-label">jam_tutup</label>
                                 <input type="text" class="form-control @error('jam_buka_sampai') is-invalid @enderror" id="jam_buka_sampai" name="jam_buka_sampai" placeholder="18:00 WIB">
                                 @error('jam_buka_sampai')
                                     <div class="invalid-feedback">
