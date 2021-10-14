@@ -31,8 +31,10 @@
                             <th scope="col">Foto 3</th>
                             <th scope="col">Metode Penjualan</th>
                             <th scope="col">Harga</th>
-                            <th scope="col">Hari Kerja</th>
-                            <th scope="col">Jam Buka</th>
+                            <th scope="col">Hari Kerja Mulai</th>
+                            <th scope="col">Hari Kerja Sampai</th>
+                            <th scope="col">Jam Buka Mulai</th>
+                            <th scope="col">Jam Buka Sampai</th>
                             <th scope="col">Aksi</th>
                         </tr>
                       </thead>
@@ -52,8 +54,10 @@
                           <td>{{ $t->foto_3 }}</td>
                           <td>{{ $t->metode_penjualan }}</td>
                           <td>{{ $t->harga }}</td>
-                          <td>{{ $t->hari_kerja }}</td>
-                          <td>{{ $t->jam_buka }}</td>
+                          <td>{{ $t->hari_kerja_mulai }}</td>
+                          <td>{{ $t->hari_kerja_sampai }}</td>
+                          <td>{{ $t->jam_buka_mulai }}</td>
+                          <td>{{ $t->jam_buka_sampai }}</td>
                           <td>
                                 <a href="/toko/{{ $t->id }}" class="btn btn-success">Edit</a>
 
@@ -79,11 +83,16 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="nama_toko" class="form-label">Nama Toko</label>
-                                <input type="text" class="form-control" id="nama_toko" name="nama_toko" placeholder="Sriwijaya Laundry">
+                                <input type="text" class="form-control @error('nama_toko') is-invalid @enderror" id="nama_toko" name="nama_toko" placeholder="Sriwijaya Laundry">
+                                @error('nama_toko')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="nama_pemilik" class="form-label">nama_pemilik</label>
-                                <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik" placeholder="masukkan nama_pemilik">
+                                <input type="text" class="form-control " id="nama_pemilik" name="nama_pemilik" placeholder="masukkan nama_pemilik">
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">alamat</label>
@@ -109,10 +118,10 @@
                                 <label for="foto_1" class="form-label">foto_1</label>
                                 <input type="text" class="form-control" id="foto_1" name="foto_1" placeholder="masukkan foto_1">
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="foto_1" class="form-label">Foto 1</label>
                                 <input class="form-control" type="file" id="foto_1" name="foto_1">
-                              </div>
+                              </div> --}}
                             <div class="mb-3">
                                 <label for="foto_2" class="form-label">foto_2</label>
                                 <input type="text" class="form-control" id="foto_2" name="foto_2" placeholder="masukkan foto_2">
@@ -133,7 +142,7 @@
                             </select>
                             <div class="mb-3">
                                 <label for="harga" class="form-label">harga</label>
-                                <input type="text" class="form-control" id="harga" name="harga" placeholder="10.000 Per Biji">
+                                <input type="text" class="form-control" id="harga" name="harga" placeholder="10.000 Per Kilo">
                             </div>
                             {{-- <div class="mb-3">
                                 <input type="text" class="form-control" id="hari_kerja_mulai" name="hari_kerja_mulai" placeholder="masukkan hari_kerja_mulai">
@@ -149,10 +158,6 @@
                                 <option value="Sabtu">Sabtu</option>
                                 <option value="Minggu">Minggu</option>
                             </select>
-                            {{-- <div class="mb-3">
-                                <label for="hari_kerja_sampai" class="form-label">hari_kerja_sampai</label>
-                                <input type="text" class="form-control" id="hari_kerja_sampai" name="hari_kerja_sampai" placeholder="masukkan hari_kerja_sampai">
-                            </div> --}}
                             <select class="form-select mb-3" id="hari_kerja_sampai" name="hari_kerja_sampai">
                                 <option selected>Sampai Hari</option>
                                 <option value="Senin">Senin</option>
