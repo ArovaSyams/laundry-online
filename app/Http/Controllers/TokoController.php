@@ -39,6 +39,7 @@ class TokoController extends Controller
             'foto_1' => 'required|max:255',
             'foto_2' => 'required|max:255',
             'foto_3' => 'required|max:255',
+            'deskripsi' => 'required',
             'metode_penjualan' => 'required',
             'harga' => 'required|max:255',
             'hari_kerja_mulai' => 'required',

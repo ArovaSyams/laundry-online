@@ -130,6 +130,10 @@
                                 <label for="foto_3" class="form-label">foto_3</label>
                                 <input type="text" class="form-control" id="foto_3" name="foto_3" placeholder="masukkan foto_3">
                             </div>
+                            <div class="mb-3">
+                                <label for="deskripsi" class="form-label">deskripsi</label>
+                                <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="masukkan deskripsi">
+                            </div>
                             {{-- <div class="mb-3">
                                 <label for="metode_penjualan" class="form-label">metode_penjualan</label>
                                 <input type="text" class="form-control" id="metode_penjualan" name="metode_penjualan" placeholder="masukkan metode_penjualan">
