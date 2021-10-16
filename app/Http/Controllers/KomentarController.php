@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 
-class StatusController extends Controller
+class KomentarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,10 @@ class StatusController extends Controller
      */
     public function index()
     {
-        return view('status.index', [
-            'status' => Status::all()
+        return view('komentar.index', [
+            'komentar' => Komentar::all()
         ]);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -31,12 +30,12 @@ class StatusController extends Controller
         $validatedData = $request->validate([
             'nama_user' => 'required|max:255',
             'nama_toko' => 'required|max:255',
-            'status' => 'required',
+            'komentar' => 'required',
             
         ]);
 
-        Status::create($validatedData);
-        return redirect('status');
+        Komentar::create($validatedData);
+        return redirect('komentar');
     }
 
     /**
@@ -47,8 +46,8 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        return view('status.update', [
-            'status' => Status::find($id)
+        return view('komentar.update', [
+            'komentar' => Komentar::find($id)
         ]);
     }
 
@@ -64,13 +63,13 @@ class StatusController extends Controller
         $validatedData = $request->validate([
             'nama_user' => 'required|max:255',
             'nama_toko' => 'required|max:255',
-            'status' => 'required',
+            'komentar' => 'required',
             
         ]);
 
-        Status::find($id)->update($validatedData);
+        Komentar::find($id)->update($validatedData);
 
-        return redirect('status');
+        return redirect('komentar');
     }
 
     /**
@@ -81,8 +80,8 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        Status::find($id)->delete();
+        Komentar::find($id)->delete();
         
-        return redirect('status');
+        return redirect('komentar');
     }
 }

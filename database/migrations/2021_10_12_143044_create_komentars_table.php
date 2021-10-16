@@ -17,7 +17,7 @@ class CreateKomentarsTable extends Migration
             $table->id();
             $table->string('nama_user');
             $table->string('nama_toko');
-            $table->string('komentar');
+            $table->longText('komentar');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KomentarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\OrderController;
@@ -45,5 +46,14 @@ Route::get('/status/{id}', [StatusController::class, 'edit']);
 Route::post('/status/{id}', [StatusController::class, 'update']);
 
 Route::delete('/status/{id}', [StatusController::class, 'destroy']);
+
+// komentar CRUD
+Route::get('/komentar', [KomentarController::class, 'index']);
+Route::post('/komentar', [KomentarController::class, 'store']);
+
+Route::get('/komentar/{id}', [KomentarController::class, 'edit']);
+Route::post('/komentar/{id}', [KomentarController::class, 'update']);
+
+Route::delete('/komentar/{id}', [KomentarController::class, 'destroy']);
 
 
