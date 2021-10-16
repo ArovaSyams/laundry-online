@@ -29,3 +29,10 @@ Route::delete('/toko/{id}', [TokoController::class, 'destroy']);
 
 // Order CRUD
 Route::get('/order', [OrderController::class, 'index']);
+Route::post('/order', [OrderController::class, 'store']);
+
+Route::get('/order/{id}', [OrderController::class, 'edit']);
+Route::post('/order/{id}', [OrderController::class, 'update']);
+
+Route::delete('/order/{id}', [OrderController::class, 'destroy']);
+

@@ -178,7 +178,7 @@
 
                             <div class="mb-3">
                                 <label for="jam_buka_mulai" class="form-label">jam_buka_mulai</label>
-                                <input type="text" class="form-control @error('jam_buka_mulai') is-invalid @enderror" id="jam_buka_mulai" name="jam_buka_mulai" placeholder="07:00 WIB" value="{{ $toko->jam_buka_mulai }}">
+                                <input type="time" class="form-control @error('jam_buka_mulai') is-invalid @enderror" id="jam_buka_mulai" name="jam_buka_mulai" placeholder="07:00 WIB" value="{{ $toko->jam_buka_mulai }}">
                                 @error('jam_buka_mulai')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -187,7 +187,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="jam_buka_sampai" class="form-label">jam_tutup</label>
-                                <input type="text" class="form-control @error('jam_buka_sampai') is-invalid @enderror" id="jam_buka_sampai" name="jam_buka_sampai" placeholder="18:00 WIB" value="{{ $toko->jam_buka_sampai }}">
+                                <input type="time" class="form-control @error('jam_buka_sampai') is-invalid @enderror" id="jam_buka_sampai" name="jam_buka_sampai" placeholder="18:00 WIB" value="{{ $toko->jam_buka_sampai }}">
                                 @error('jam_buka_sampai')
                                     <div class="invalid-feedback">
                                         {{ $message }}

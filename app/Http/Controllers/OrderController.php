@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,18 +14,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order.index');
+        return view('order.index', [
+            'order' => Order::all()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +28,23 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_user' => 'required|max:255',
+            'nama_toko' => 'required|max:255',
+            'alamat' => 'required',
+            'provinsi' => 'required|max:255',
+            'kota' => 'required|max:255',
+            'kecamatan' => 'required|max:255',
+            'kelurahan' => 'required|max:255',
+            'jumlah_qty' => 'required|max:255',
+            'total' => 'required',
+            'waktu_pengambilan' => 'required|max:255',
+            'tanggal_pemesanan' => 'required',
+            'tanggal_jadi' => 'required',
+        ]);
+
+        Order::create($validatedData);
+        return redirect('order');
     }
 
     /**
@@ -56,7 +66,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('order.update', [
+            'order' => Order::find($id)
+        ]);
     }
 
     /**
@@ -68,7 +80,24 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_user' => 'required|max:255',
+            'nama_toko' => 'required|max:255',
+            'alamat' => 'required',
+            'provinsi' => 'required|max:255',
+            'kota' => 'required|max:255',
+            'kecamatan' => 'required|max:255',
+            'kelurahan' => 'required|max:255',
+            'jumlah_qty' => 'required|max:255',
+            'total' => 'required',
+            'waktu_pengambilan' => 'required|max:255',
+            'tanggal_pemesanan' => 'required',
+            'tanggal_jadi' => 'required',
+        ]);
+        
+        Order::find($id)->update($validatedData);
+
+        return redirect('order');
     }
 
     /**
@@ -79,6 +108,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Order::find($id)->delete();
+        
+        return redirect('order');
     }
 }
