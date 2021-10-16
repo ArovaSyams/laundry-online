@@ -24,9 +24,9 @@ class CreateOrdersTable extends Migration
             $table->string('kelurahan');
             $table->string('jumlah_qty');
             $table->string('total');
+            $table->string('waktu_pengambilan');
             $table->date('tanggal_pemesanan');
             $table->date('tanggal_jadi')->nullable();
-            $table->string('waktu_pengambilan');
             $table->timestamps();
         });
     }
