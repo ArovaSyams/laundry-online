@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\KomentarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\LanggananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,13 @@ Route::post('/komentar', [KomentarController::class, 'store']);
 Route::get('/komentar/{id}', [KomentarController::class, 'edit']);
 Route::post('/komentar/{id}', [KomentarController::class, 'update']);
 
-Route::delete('/komentar/{id}', [KomentarController::class, 'destroy']);
+// Langganan CRUD
+Route::get('/langganan', [LanggananController::class, 'index']);
+Route::post('/langganan', [LanggananController::class, 'store']);
+
+Route::get('/langganan/{id}', [LanggananController::class, 'edit']);
+Route::post('/langganan/{id}', [LanggananController::class, 'update']);
+
+Route::delete('/langganan/{id}', [LanggananController::class, 'destroy']);
 
 
