@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\TokoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TokoController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,14 @@ Route::get('/order/{id}', [OrderController::class, 'edit']);
 Route::post('/order/{id}', [OrderController::class, 'update']);
 
 Route::delete('/order/{id}', [OrderController::class, 'destroy']);
+
+// status CRUD
+Route::get('/status', [StatusController::class, 'index']);
+Route::post('/status', [StatusController::class, 'store']);
+
+Route::get('/status/{id}', [StatusController::class, 'edit']);
+Route::post('/status/{id}', [StatusController::class, 'update']);
+
+Route::delete('/status/{id}', [StatusController::class, 'destroy']);
+
 
