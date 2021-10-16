@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\LanggananController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,16 @@ use App\Http\Controllers\LanggananController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// user CRUD
+Route::get('/user', [UserController::class, 'index']);
+Route::post('/user', [UserController::class, 'store']);
+
+Route::get('/user/{id}', [UserController::class, 'edit']);
+Route::post('/user/{id}', [UserController::class, 'update']);
+
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
 // TOKO CRUD
 Route::get('/toko', [TokoController::class, 'index']);
 Route::post('/toko', [TokoController::class, 'store']);
