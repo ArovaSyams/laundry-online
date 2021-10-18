@@ -30,8 +30,9 @@
                         @foreach ($komentar as $k)
                         <tr>
                           <th scope="row">{{ $k->id }}</th>
-                          <td>{{ $k->nama_user }}</td>
-                          <td>{{ $k->nama_toko }}</td>
+                          <td>{{ $k->user_id }}</td>
+                          <td>{{ $k->toko_id }}</td>
+                          <td>{{ $k->rating }}</td>
                           <td>{{ $k->komentar }}</td>
                           
                           <td>
@@ -57,18 +58,27 @@
                         <form method="POST" action="/komentar">
                             @csrf
                             <div class="mb-3">
-                                <label for="nama_user" class="form-label">nama_user</label>
-                                <input type="text" class="form-control @error('nama_user') is-invalid @enderror" id="nama_user" name="nama_user" placeholder="Sriwijaya Laundry" value="{{ old('nama_user') }}">
-                                @error('nama_user')
+                                <label for="user_id" class="form-label">user_id</label>
+                                <input type="text" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" placeholder="Sriwijaya Laundry" value="{{ old('user_id') }}">
+                                @error('user_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="nama_toko" class="form-label">nama_toko</label>
-                                <input type="text" class="form-control @error('nama_toko') is-invalid @enderror" id="nama_toko" name="nama_toko" placeholder="masukkan nama_toko" value="{{ old('nama_toko') }}">
-                                @error('nama_toko')
+                                <label for="toko_id" class="form-label">toko_id</label>
+                                <input type="text" class="form-control @error('toko_id') is-invalid @enderror" id="toko_id" name="toko_id" placeholder="masukkan toko_id" value="{{ old('toko_id') }}">
+                                @error('toko_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="rating" class="form-label">rating</label>
+                                <input type="text" class="form-control @error('rating') is-invalid @enderror" id="rating" name="rating" placeholder="masukkan rating" value="{{ old('rating') }}">
+                                @error('rating')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

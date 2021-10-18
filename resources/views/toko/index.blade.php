@@ -20,7 +20,7 @@
                         <tr>
                             <th scope="col">id</th>
                             <th scope="col">Nama Toko</th>
-                            <th scope="col">Nama Pemilik</th>
+                            <th scope="col">User ID</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">Provinsi</th>
                             <th scope="col">Kota</th>
@@ -44,7 +44,7 @@
                         <tr>
                           <th scope="row">{{ $t->id }}</th>
                           <td>{{ $t->nama_toko }}</td>
-                          <td>{{ $t->nama_pemilik }}</td>
+                          <td>{{ $t->user_id }}</td>
                           <td>{{ $t->alamat }}</td>
                           <td>{{ $t->provinsi }}</td>
                           <td>{{ $t->kota }}</td>
@@ -93,9 +93,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="nama_pemilik" class="form-label">nama_pemilik</label>
-                                <input type="text" class="form-control @error('nama_pemilik') is-invalid @enderror" id="nama_pemilik" name="nama_pemilik" placeholder="masukkan nama_pemilik" value="{{ old('nama_pemilik') }}">
-                                @error('nama_pemilik')
+                                <label for="user_id" class="form-label">user_id</label>
+                                <input type="text" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" placeholder="masukkan user_id" value="{{ old('user_id') }}">
+                                @error('user_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -189,7 +189,7 @@
                             <div class="mb-3">
                                 <label for="metode_penjualan" class="form-label">metode_penjualan</label>
                                 <select class="form-select  @error('metode_penjualan') is-invalid @enderror" id="metode_penjualan" name="metode_penjualan">
-                                    <option selected value="value="{{ old('metode_penjualan') }}"">Metode Penjualan</option>
+                                    <option selected value="{{ old('metode_penjualan') }}">Metode Penjualan</option>
                                     <option value="Kiloan">Kiloan</option>
                                     <option value="Bijian">Bijian</option>
                                 </select>

@@ -30,7 +30,7 @@ class TokoController extends Controller
     {
         $validatedData = $request->validate([
             'nama_toko' => 'required|max:255',
-            'nama_pemilik' => 'required|max:255',
+            'user_id' => 'required|max:255',
             'alamat' => 'required',
             'provinsi' => 'required|max:255',
             'kota' => 'required|max:255',
@@ -96,7 +96,7 @@ class TokoController extends Controller
         
         $validatedData = $request->validate([
             'nama_toko' => 'required|max:255',
-            'nama_pemilik' => 'required|max:255',
+            'user_id' => 'required|max:255',
             'alamat' => 'required',
             'provinsi' => 'required|max:255',
             'kota' => 'required|max:255',

@@ -20,18 +20,27 @@
                         <form method="POST" action="/komentar/{{ $komentar->id }}">
                             @csrf
                             <div class="mb-3">
-                                <label for="nama_user" class="form-label">nama_user</label>
-                                <input type="text" class="form-control @error('nama_user') is-invalid @enderror" id="nama_user" name="nama_user" placeholder="{{ $komentar->nama_user }}" value="{{ $komentar->nama_user }}">
-                                @error('nama_user')
+                                <label for="user_id" class="form-label">user_id</label>
+                                <input type="text" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" placeholder="{{ $komentar->user_id }}" value="{{ $komentar->user_id }}">
+                                @error('user_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="nama_toko" class="form-label">nama_toko</label>
-                                <input type="text" class="form-control @error('nama_toko') is-invalid @enderror" id="nama_toko" name="nama_toko" placeholder="{{ $komentar->nama_toko }}" value="{{ $komentar->nama_toko }}">
-                                @error('nama_toko')
+                                <label for="toko_id" class="form-label">toko_id</label>
+                                <input type="text" class="form-control @error('toko_id') is-invalid @enderror" id="toko_id" name="toko_id" placeholder="{{ $komentar->toko_id }}" value="{{ $komentar->toko_id }}">
+                                @error('toko_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="rating" class="form-label">rating</label>
+                                <input type="text" class="form-control @error('rating') is-invalid @enderror" id="rating" name="rating" placeholder="{{ $komentar->rating }}" value="{{ $komentar->rating }}">
+                                @error('rating')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

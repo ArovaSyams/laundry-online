@@ -31,9 +31,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="nama_pemilik" class="form-label">nama_pemilik</label>
-                                <input type="text" class="form-control @error('nama_pemilik') is-invalid @enderror" id="nama_pemilik" name="nama_pemilik" placeholder="{{ $toko->nama_pemilik }}" value="{{ $toko->nama_pemilik }}">
-                                @error('nama_pemilik')
+                                <label for="user_id" class="form-label">user_id</label>
+                                <input type="text" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" placeholder="{{ $toko->user_id }}" value="{{ $toko->user_id }}">
+                                @error('user_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
