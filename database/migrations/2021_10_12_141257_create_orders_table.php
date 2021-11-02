@@ -15,14 +15,14 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_user');
-            $table->string('nama_toko');
+            $table->foreignId('user_id');
+            $table->foreignId('toko_id');
             $table->string('alamat');
             $table->string('provinsi');
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('kelurahan');
-            $table->string('jumlah_qty')->nullable();
+            $table->integer('jumlah_qty')->nullable();
             $table->integer('total')->nullable();
             $table->string('waktu_pengambilan');
             $table->date('tanggal_pemesanan');

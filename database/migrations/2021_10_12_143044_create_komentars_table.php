@@ -15,8 +15,8 @@ class CreateKomentarsTable extends Migration
     {
         Schema::create('komentars', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('toko_id');
+            $table->foreignId('user_id');
+            $table->foreignId('toko_id');
             $table->string('rating');
             $table->longText('komentar');
             $table->timestamps();
