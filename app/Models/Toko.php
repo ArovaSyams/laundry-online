@@ -15,6 +15,18 @@ class Toko extends Model
     {
         return $this->hasMany(Komentar::class);
     }
+    public function status() 
+    {
+        return $this->hasMany(Status::class);
+    }
+    public function order() 
+    {
+        return $this->hasMany(Order::class);
+    }
+    public function langganan() 
+    {
+        return $this->hasMany(Langganan::class);
+    }
 
     public function user() 
     {

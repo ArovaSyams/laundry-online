@@ -15,4 +15,8 @@ class Langganan extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function toko() 
+    {
+        return $this->belongsTo(Toko::class);
+    }
 }
