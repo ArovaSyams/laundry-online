@@ -15,10 +15,31 @@ class KomentarSeeder extends Seeder
     public function run()
     {
         DB::table('komentars')->insert([
-            'user_id' => 1,
-            'toko_id' => 1,
-            'rating' => 'sangat baik',
-            'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+            [
+                'user_id' => 2,
+                'toko_id' => 1,
+                'rating' => 'sangat baik',
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+            ],
+            [
+                'user_id' => 3,
+                'toko_id' => 1,
+                'rating' => 'sangat baik',
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+            ],
+            [
+                'user_id' => 2,
+                'toko_id' => 2,
+                'rating' => 'sangat baik',
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+            ],
+            [
+                'user_id' => 1,
+                'toko_id' => 3,
+                'rating' => 'sangat baik',
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+            ],
+
         ]);
     }
 }

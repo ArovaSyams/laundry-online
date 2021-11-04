@@ -15,7 +15,7 @@ class OrderSeeder extends Seeder
     public function run()
     {
         DB::table('orders')->insert([
-            'user_id' => 1,
+            'user_id' => 2,
             'toko_id' => 1,
             'alamat' => 'Jln. Hibrida 8 No. 13A kel. Sidomulyo Kec. Gading Cempaka Kota Bengkulu',
             'provinsi' => 'Bengkulu',
