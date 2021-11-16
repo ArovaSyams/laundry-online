@@ -7,6 +7,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +77,9 @@ Route::post('/langganan/{id}', [LanggananController::class, 'update']);
 Route::delete('/langganan/{id}', [LanggananController::class, 'destroy']);
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user');
+
+Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin')->middleware('admin');
