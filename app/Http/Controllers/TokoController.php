@@ -15,8 +15,15 @@ class TokoController extends Controller
      */
     public function index()
     {
+        // $toko = Toko::all();
+        // foreach ($toko as $t) {
+
+        //     echo $t->user;
+        // }
+
         return view('toko.index', [
-            'toko' => Toko::all()
+            'toko' => Toko::all(),
+            'title' => 'Data Toko'
         ]);
     }
 
@@ -79,7 +86,8 @@ class TokoController extends Controller
     public function edit($id)
     {
         return view('toko.update', [
-            'toko' => Toko::find($id)
+            'toko' => Toko::find($id),
+            'title' => 'Data Toko'
         ]);
     }
 

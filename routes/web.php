@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 // user CRUD
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('admin');
 Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/user/{id}', [UserController::class, 'edit']);
@@ -67,6 +67,8 @@ Route::post('/komentar', [KomentarController::class, 'store']);
 Route::get('/komentar/{id}', [KomentarController::class, 'edit']);
 Route::post('/komentar/{id}', [KomentarController::class, 'update']);
 
+Route::delete('/komentar/{id}', [KomentarController::class, 'destroy']);
+
 // Langganan CRUD
 Route::get('/langganan', [LanggananController::class, 'index']);
 Route::post('/langganan', [LanggananController::class, 'store']);
@@ -82,4 +84,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user');
 
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin')->middleware('admin');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin')->middleware('admin');

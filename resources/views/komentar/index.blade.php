@@ -1,19 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+@extends('layouts.app')
 
-    <title>Komentar CRUD</title>
-</head>
-<body>
-    <div class="container">
-        <div class="col">
-            <div class="row">
-                <h1 class="mt-5">CRUD Komentar</h1>
+@section('content')
+    
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0" style="font-weight: 500">Order</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Order</li>
+            </ol>
+        </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
+<section class="content">
+    <div class="container-fluid">
+        <div class="card ">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Data Order
+            </div>
+            <div class="card-body">
+                    <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addUserModal">
+                    Tambah Data
+                </button>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead class="bg-light">
@@ -21,6 +38,7 @@
                             <th scope="col">id</th>
                             <th scope="col">Nama User</th>
                             <th scope="col">Nama toko</th>
+                            <th scope="col">Rating</th>
                             <th scope="col">Komentar</th>
                             
                             <th scope="col">Aksi</th>
@@ -30,8 +48,8 @@
                         @foreach ($komentar as $k)
                         <tr>
                           <th scope="row">{{ $k->id }}</th>
-                          <td>{{ $k->user_id }}</td>
-                          <td>{{ $k->toko_id }}</td>
+                          <td>{{ $k->user->nama }}</td>
+                          <td>{{ $k->toko->nama_toko }}</td>
                           <td>{{ $k->rating }}</td>
                           <td>{{ $k->komentar }}</td>
                           
@@ -40,7 +58,7 @@
 
                                 <form action="/komentar/{{ $k->id }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                                 
@@ -50,11 +68,22 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+    </div>
+</section>
                 
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h3 class="card-title">TAMBAH DATA</h3>
-                        <hr>
+              <!-- Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
                         <form method="POST" action="/komentar">
                             @csrf
                             <div class="mb-3">
@@ -93,15 +122,15 @@
                                     </div>
                                 @enderror
                             </div>
-                            
-                            
-                            <button type="submit" class="btn btn-primary">Kirim</button>
-                        </form>
-                    </div>
-                  </div>
-
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
             </div>
-        </div>
-    </div>
-</body>
-</html>
+
+
+@endsection

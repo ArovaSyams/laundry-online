@@ -15,7 +15,8 @@ class OrderController extends Controller
     public function index()
     {
         return view('order.index', [
-            'order' => Order::all()
+            'order' => Order::all(),
+            'title' => 'Data Order'
         ]);
     }
 
@@ -29,8 +30,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_user' => 'required|max:255',
-            'nama_toko' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'toko_id' => 'required|max:255',
             'alamat' => 'required',
             'provinsi' => 'required|max:255',
             'kota' => 'required|max:255',
@@ -56,7 +57,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         return view('order.update', [
-            'order' => Order::find($id)
+            'order' => Order::find($id),
+            'title' => 'Data Order'
         ]);
     }
 
@@ -70,8 +72,8 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nama_user' => 'required|max:255',
-            'nama_toko' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'toko_id' => 'required|max:255',
             'alamat' => 'required',
             'provinsi' => 'required|max:255',
             'kota' => 'required|max:255',

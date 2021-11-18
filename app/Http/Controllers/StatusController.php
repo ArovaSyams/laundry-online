@@ -15,7 +15,8 @@ class StatusController extends Controller
     public function index()
     {
         return view('status.index', [
-            'status' => Status::all()
+            'status' => Status::all(),
+            'title' => 'Data Status'
         ]);
     }
 
@@ -29,8 +30,8 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_user' => 'required|max:255',
-            'nama_toko' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'toko_id' => 'required|max:255',
             'status' => 'required',
             
         ]);
@@ -48,7 +49,8 @@ class StatusController extends Controller
     public function edit($id)
     {
         return view('status.update', [
-            'status' => Status::find($id)
+            'status' => Status::find($id),
+            'title' => 'Data Status'
         ]);
     }
 
@@ -62,8 +64,8 @@ class StatusController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nama_user' => 'required|max:255',
-            'nama_toko' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'toko_id' => 'required|max:255',
             'status' => 'required',
             
         ]);

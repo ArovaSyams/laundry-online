@@ -15,7 +15,8 @@ class KomentarController extends Controller
     public function index()
     {
         return view('komentar.index', [
-            'komentar' => Komentar::all()
+            'komentar' => Komentar::all(),
+            'title' => 'Data Komentar'
         ]);
     }
 
@@ -48,7 +49,8 @@ class KomentarController extends Controller
     public function edit($id)
     {
         return view('komentar.update', [
-            'komentar' => Komentar::find($id)
+            'komentar' => Komentar::find($id),
+            'title' => 'Data Komentar'
         ]);
     }
 

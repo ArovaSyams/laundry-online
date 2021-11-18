@@ -46,17 +46,16 @@ class LoginController extends Controller
             'email' => 'required|max:255',
             'password' => 'required|max:255',     
         ]);
-
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) 
         {
             if (Auth::user()->role === 'admin') 
             {
-                return redirect('admin/home');
-            } else {
-                return redirect('login');
+                return redirect('/admin');
             }
-                
+            
         }
+        return redirect('login')->with('message', 'Email atau sandi salah');
+        
         
     }
 }
