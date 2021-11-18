@@ -1,37 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+@extends('layouts.app')
 
-    <title>Update Langganan</title>
-</head>
-<body>
-    <div class="container">
-        <div class="col">
-            <div class="row">
+@section('content')
+    
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0" style="font-weight: 500">Edit Langganan</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Edit Langganan</li>
+            </ol>
+        </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h3 class="card-title">UPDATE DATA</h3>
-                        <hr>
+<section class="content">
+    <div class="container-fluid">
+        <div class="card ">
+            <div class="card-header">
+                <i class="fas fa-edit mr-1"></i>
+                Data Langganan
+            </div>
+            <div class="card-body">
                         <form method="POST" action="/langganan/{{ $langganan->id }}">
                             @csrf
                             <div class="mb-3">
-                                <label for="nama_user" class="form-label">nama_user</label>
-                                <input type="text" class="form-control @error('nama_user') is-invalid @enderror" id="nama_user" name="nama_user" placeholder="{{ $langganan->nama_user }}" value="{{ $langganan->nama_user }}">
-                                @error('nama_user')
+                                <label for="user_id" class="form-label">user_id</label>
+                                <input type="text" class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" placeholder="{{ $langganan->user_id }}" value="{{ $langganan->user_id }}">
+                                @error('user_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="nama_toko" class="form-label">nama_toko</label>
-                                <input type="text" class="form-control @error('nama_toko') is-invalid @enderror" id="nama_toko" name="nama_toko" placeholder="{{ $langganan->nama_toko }}" value="{{ $langganan->nama_toko }}">
-                                @error('nama_toko')
+                                <label for="toko_id" class="form-label">toko_id</label>
+                                <input type="text" class="form-control @error('toko_id') is-invalid @enderror" id="toko_id" name="toko_id" placeholder="{{ $langganan->toko_id }}" value="{{ $langganan->toko_id }}">
+                                @error('toko_id')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -43,10 +53,7 @@
                             <button type="submit" class="btn btn-primary">Kirim</button>
                         </form>
                     </div>
-                  </div>
-            </div>
-        </div>
+                </div>
     </div>
-
-</body>
-</html>
+</section>
+@endsection

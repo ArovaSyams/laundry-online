@@ -195,9 +195,13 @@
                     <i class="nav-icon fas fa-comment-alt"></i>
                     <p>Komentar</p>
                 </a>
-            </li>
-          
-          
+            </li><li class="nav-item">
+              <a href="/langganan" class="nav-link {{ ($title == 'Data Langganan')? 'active' : '' }}">
+                  <i class="nav-icon fas fa-bell"></i>
+                  <p>Langganan</p>
+              </a>
+          </li>
+        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

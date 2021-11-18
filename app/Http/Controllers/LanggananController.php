@@ -15,7 +15,8 @@ class LanggananController extends Controller
     public function index()
     {
         return view('langganan.index', [
-            'langganan' => Langganan::all()
+            'langganan' => Langganan::all(),
+            'title' => 'Data Langganan'
         ]);
     }
 
@@ -28,8 +29,8 @@ class LanggananController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_user' => 'required|max:255',
-            'nama_toko' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'toko_id' => 'required|max:255',
             
         ]);
 
@@ -57,7 +58,8 @@ class LanggananController extends Controller
     public function edit($id)
     {
         return view('langganan.update', [
-            'langganan' => Langganan::find($id)
+            'langganan' => Langganan::find($id),
+            'title' => 'Data Langganan'
         ]);
     }
 
@@ -71,8 +73,8 @@ class LanggananController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nama_user' => 'required|max:255',
-            'nama_toko' => 'required|max:255',
+            'user_id' => 'required|max:255',
+            'toko_id' => 'required|max:255',
             
         ]);
 
