@@ -32,10 +32,11 @@
                         Tambah Data
                     </button>
                     <div class="table-responsive">
-                        <table class="table table-bordered data-user" id="dataUser" width="100%">
-                            <thead>
+                        <table class="table" id="dataUser" width="100%">
+                            <thead class="bg-light">
                                 <tr>
                                     <th style="width: 100px">id</th>
+                                    <th>Foto</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     {{-- <th>Password</th> --}}
@@ -47,7 +48,6 @@
                                     <th>Kecamatan</th>
                                     <th>Kelurahan</th>
                                     <th>Point</th>
-                                    <th>Foto</th>
 
                                     <th>Aksi</th>
                                 </tr>
@@ -56,18 +56,24 @@
                                 @foreach ($user as $u)
                                     <tr>
                                         <th>{{ $u->id }}</th>
-                                        <td>{{ $u->nama }}</td>
+                                        <td><img src="/img/{{ $u->foto }}" alt="" width="100px"></td>
+                                        <td>{{ $u->nama }}
+                                            <p style="color: white">_________________________________</p>
+                                        </td>
                                         <td>{{ $u->email }}</td>
                                         {{-- <td>{{ $u->password }}</td> --}}
                                         <td>{{ $u->role }}</td>
-                                        <td>{{ $u->tanggal_lahir }}</td>
-                                        <td>{{ $u->alamat }}</td>
+                                        <td>{{ $u->tanggal_lahir }}
+                                            <p style="color: white">______________________</p>
+                                        </td>
+                                        <td>{{ $u->alamat }} 
+                                            <p style="color: white">_______________________________________________________________________</p>
+                                        </td>
                                         <td>{{ $u->provinsi }}</td>
                                         <td>{{ $u->kota }}</td>
                                         <td>{{ $u->kecamatan }}</td>
                                         <td>{{ $u->kelurahan }}</td>
                                         <td>{{ $u->point }}</td>
-                                        <td>{{ $u->foto }}</td>
 
                                         <td>
                                             <a href="/user/{{ $u->id }}" class="btn btn-success">Edit</a>
@@ -92,7 +98,7 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-
+                                            <p style="color: white">____________________</p>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -118,7 +124,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/user">
+                    <form method="POST" action="/user" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
@@ -231,10 +237,20 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="foto" class="form-label">foto</label>
                             <input type="text" class="form-control @error('foto') is-invalid @enderror" id="foto"
                                 name="foto" placeholder="masukkan foto" value="{{ old('foto') }}">
+                            @error('foto')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div> --}}
+
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto</label>
+                            <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto">
                             @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}

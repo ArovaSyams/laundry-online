@@ -27,8 +27,13 @@
                     Data Toko
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/toko/{{ $toko->id }}">
+                    <form method="POST" action="/toko/{{ $toko->id }}" enctype="multipart/form-data">
                         @csrf
+
+                        <input type="hidden" id="foto_lama1" name="foto_lama1" value="{{ $toko->foto_1 }}">
+                        <input type="hidden" id="foto_lama2" name="foto_lama2" value="{{ $toko->foto_2 }}">
+                        <input type="hidden" id="foto_lama3" name="foto_lama3" value="{{ $toko->foto_3 }}">
+
                         <div class="mb-3">
                             <label for="nama_toko" class="form-label">Nama Toko</label>
                             <input type="text" class="form-control @error('nama_toko') is-invalid @enderror" id="nama_toko"
@@ -99,7 +104,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="foto_1" class="form-label">foto_1</label>
                             <input type="text" class="form-control @error('foto_1') is-invalid @enderror" id="foto_1"
                                 name="foto_1" placeholder="{{ $toko->foto_1 }}" value="{{ $toko->foto_1 }}">
@@ -128,7 +133,36 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                        </div> --}}
+
+                        <div class="mb-3">
+                            <label for="foto_1" class="form-label">Foto_1</label>
+                            <input class="form-control @error('foto_1') is-invalid @enderror" type="file" id="foto_1" name="foto_1">
+                            @error('foto_1')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
+                        <div class="mb-3">
+                            <label for="foto_2" class="form-label">Foto_2</label>
+                            <input class="form-control @error('foto_2') is-invalid @enderror" type="file" id="foto_2" name="foto_2">
+                            @error('foto_2')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="foto_3" class="form-label">Foto_3</label>
+                            <input class="form-control @error('foto_3') is-invalid @enderror" type="file" id="foto_3" name="foto_3">
+                            @error('foto_3')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">deskripsi</label>
                             <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"

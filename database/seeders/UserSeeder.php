@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'kecamatan' => 'Gading Cempaka',
                 'kelurahan' => 'Sidomulyo',
                 'point' => 10,
-                'foto' => 'asdasdasdasdasd.jpg'    
+                'foto' => 'default.jpg'    
             ],
             [
                 'nama' => 'Wifqo Arova Syams',
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 'kecamatan' => 'Gading Cempaka',
                 'kelurahan' => 'Sidomulyo',
                 'point' => 150,
-                'foto' => 'asssdasdasdasdasd.jpg'    
+                'foto' => 'default.jpg'    
             ],
             [
                 'nama' => 'Ivanka Alan',
@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
                 'kecamatan' => 'Gading Cempaka',
                 'kelurahan' => 'Sidomulyo',
                 'point' => 200,
-                'foto' => 'addsssdasdasdasdasd.jpg'    
+                'foto' => 'default.jpg'    
             ],
         ]);
     }

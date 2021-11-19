@@ -32,21 +32,21 @@
                         Tambah Data
                     </button>
                     <div class="table-responsive">
-                        <table class="table table-bordered data-user" id="dataUser" width="100%">
-                            <thead>
+                        <table class="table data-user" id="dataUser" width="100%">
+                            <thead class="bg-light">
                                 <tr>
                                     <th scope="col">id</th>
+                                    <th scope="col">Foto 1</th>
+                                    <th scope="col">Foto 2</th>
+                                    <th scope="col">Foto 3</th>
                                     <th scope="col">Nama Toko</th>
                                     <th scope="col">Nama User</th>
+                                    <th scope="col">Deskripsi</th>
                                     <th scope="col">Alamat</th>
                                     <th scope="col">Provinsi</th>
                                     <th scope="col">Kota</th>
                                     <th scope="col">Kecamatan</th>
                                     <th scope="col">Kelurahan</th>
-                                    <th scope="col">Foto 1</th>
-                                    <th scope="col">Foto 2</th>
-                                    <th scope="col">Foto 3</th>
-                                    <th scope="col">Deskripsi</th>
                                     <th scope="col">Metode Penjualan</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Hari Kerja Mulai</th>
@@ -60,19 +60,19 @@
                                 @foreach ($toko as $t)
                                     <tr>
                                         <th scope="row">{{ $t->id }}</th>
-                                        <td>{{ $t->nama_toko }}</td>
-                                        <td>{{ $t->user->nama }}</td>
-                                        <td>{{ $t->alamat }}</td>
+                                        <td><img src="/img/{{ $t->foto_1 }}" alt="" width="100px"></td>
+                                        <td><img src="/img/{{ $t->foto_2 }}" alt="" width="100px"></td>
+                                        <td><img src="/img/{{ $t->foto_3 }}" alt="" width="100px"></td>
+                                        <td>{{ $t->nama_toko }}<p style="color: white">_______________________</p></td>
+                                        <td>{{ $t->user->nama }}<p style="color: white">_______________________</p></td>
+                                        <td>{{ $t->deskripsi }}<p style="color: white">_____________________________________________________________________</p></td>
+                                        <td>{{ $t->alamat }}<p style="color: white">____________________________________________________________________</p></td>
                                         <td>{{ $t->provinsi }}</td>
                                         <td>{{ $t->kota }}</td>
                                         <td>{{ $t->kecamatan }}</td>
                                         <td>{{ $t->kelurahan }}</td>
-                                        <td>{{ $t->foto_1 }}</td>
-                                        <td>{{ $t->foto_2 }}</td>
-                                        <td>{{ $t->foto_3 }}</td>
-                                        <td>{{ $t->deskripsi }}</td>
                                         <td>{{ $t->metode_penjualan }}</td>
-                                        <td>{{ $t->harga }}</td>
+                                        <td>{{ $t->harga }}<p style="color: white">____________________</p></td>
                                         <td>{{ $t->hari_kerja_mulai }}</td>
                                         <td>{{ $t->hari_kerja_sampai }}</td>
                                         <td>{{ $t->jam_buka_mulai }}</td>
@@ -80,13 +80,13 @@
                                         <td>
                                             <a href="/toko/{{ $t->id }}" class="btn btn-success">Edit</a>
 
-                                            <form action="/toko/{{ $t->id }}" method="post">
+                                            <form action="/toko/{{ $t->id }}" method="post" style="display: inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                             {{-- <a href="/toko/delete/{{ $t->id }}" class="btn btn-danger">Hapus</a> --}}
-
+                                            <p style="color: white">____________________</p>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -110,7 +110,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/toko">
+                    <form method="POST" action="/toko" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="nama_toko" class="form-label">Nama Toko</label>
@@ -182,24 +182,19 @@
                                 </div>
                             @enderror
                         </div>
+
                         <div class="mb-3">
-                            <label for="foto_1" class="form-label">foto_1</label>
-                            <input type="text" class="form-control @error('foto_1') is-invalid @enderror" id="foto_1"
-                                name="foto_1" placeholder="masukkan foto_1" value="{{ old('foto_1') }}">
+                            <label for="foto_1" class="form-label">Foto_1</label>
+                            <input class="form-control @error('foto_1') is-invalid @enderror" type="file" id="foto_1" name="foto_1">
                             @error('foto_1')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                        {{-- <div class="mb-3">
-                    <label for="foto_1" class="form-label">Foto 1</label>
-                    <input class="form-control" type="file" id="foto_1" name="foto_1">
-                  </div> --}}
                         <div class="mb-3">
-                            <label for="foto_2" class="form-label">foto_2</label>
-                            <input type="text" class="form-control @error('foto_2') is-invalid @enderror" id="foto_2"
-                                name="foto_2" placeholder="masukkan foto_2" value="{{ old('foto_2') }}">
+                            <label for="foto_2" class="form-label">Foto_2</label>
+                            <input class="form-control @error('foto_2') is-invalid @enderror" type="file" id="foto_2" name="foto_2">
                             @error('foto_2')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -207,15 +202,15 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="foto_3" class="form-label">foto_3</label>
-                            <input type="text" class="form-control @error('foto_3') is-invalid @enderror" id="foto_3"
-                                name="foto_3" placeholder="masukkan foto_3" value="{{ old('foto_3') }}">
+                            <label for="foto_3" class="form-label">Foto_3</label>
+                            <input class="form-control @error('foto_3') is-invalid @enderror" type="file" id="foto_3" name="foto_3">
                             @error('foto_3')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
+
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">deskripsi</label>
                             <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"

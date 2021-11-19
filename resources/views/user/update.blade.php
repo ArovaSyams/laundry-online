@@ -30,8 +30,10 @@
                 <div class="card-body">
 
 
-                    <form method="POST" action="/user/{{ $user->id }}">
+                    <form method="POST" action="/user/{{ $user->id }}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" id="foto_lama" name="foto_lama" value="{{ $user->foto }}">
+                        
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
@@ -143,10 +145,20 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="foto" class="form-label">foto</label>
                             <input type="text" class="form-control @error('foto') is-invalid @enderror" id="foto"
                                 name="foto" placeholder="masukkan foto" value="{{ $user->foto }}">
+                            @error('foto')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div> --}}
+
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto</label>
+                            <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto">
                             @error('foto')
                                 <div class="invalid-feedback">
                                     {{ $message }}
