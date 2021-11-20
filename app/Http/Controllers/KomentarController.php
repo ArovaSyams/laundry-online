@@ -15,7 +15,7 @@ class KomentarController extends Controller
     public function index()
     {
         return view('komentar.index', [
-            'komentar' => Komentar::all(),
+            'komentar' => Komentar::latest()->paginate(3),
             'title' => 'Data Komentar'
         ]);
     }

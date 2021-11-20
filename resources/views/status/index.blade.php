@@ -67,6 +67,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="mt-2">
+                        {{ $status->links() }}
+                    </div>
                 </div>
             </div>
         </div>

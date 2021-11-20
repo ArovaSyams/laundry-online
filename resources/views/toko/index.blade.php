@@ -32,7 +32,7 @@
                         Tambah Data
                     </button>
                     <div class="table-responsive">
-                        <table class="table data-user" id="dataUser" width="100%">
+                        <table class="table table-bordered data-user" id="dataUser" width="100%">
                             <thead class="bg-light">
                                 <tr>
                                     <th scope="col">id</th>
@@ -92,6 +92,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="mt-2">
+                        {{ $toko->links() }}
                     </div>
                 </div>
             </div>

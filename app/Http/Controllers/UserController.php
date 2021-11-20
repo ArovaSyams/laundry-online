@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index', [
-            'user' => User::all(),
+            'user' => User::latest()->paginate(3),
             'title' => 'Data User'
         ]);
     }
@@ -41,6 +41,7 @@ class UserController extends Controller
             'kelurahan' => 'required|max:255',
         ]);
 
+        $namaFoto = 'default.jpg';
         if ($request->file('foto')) {
 
             $foto = $request->file('foto');
@@ -48,7 +49,6 @@ class UserController extends Controller
             $foto->move('img', $namaFoto);
         } 
 
-        $namaFoto = 'default.jpg';
 
         User::create([
             'nama' => $request->nama,

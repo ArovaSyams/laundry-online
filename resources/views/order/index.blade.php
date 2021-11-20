@@ -82,6 +82,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="mt-2">
+                        {{ $order->links() }}
+                    </div>
                 </div>
             </div>
         </div>

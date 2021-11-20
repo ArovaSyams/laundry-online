@@ -32,7 +32,7 @@
                         Tambah Data
                     </button>
                     <div class="table-responsive">
-                        <table class="table" id="dataUser" width="100%">
+                        <table class="table table-bordered" id="dataUser" width="100%">
                             <thead class="bg-light">
                                 <tr>
                                     <th style="width: 100px">id</th>
@@ -104,6 +104,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="mt-2">
+                        {{ $user->links() }}
                     </div>
                 </div>
             </div>

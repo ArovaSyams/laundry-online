@@ -15,9 +15,27 @@ class StatusSeeder extends Seeder
     public function run()
     {
         DB::table('statuses')->insert([
-            'user_id' => 2,
-            'toko_id' => 1,
-            'status' => 'Pengambilan'
+            [
+                'user_id' => 2,
+                'toko_id' => 1,
+                'status' => 'Pengambilan',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => 3,
+                'toko_id' => 2,
+                'status' => 'Pengambilan',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'user_id' => 2,
+                'toko_id' => 3,
+                'status' => 'Pengambilan',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 }

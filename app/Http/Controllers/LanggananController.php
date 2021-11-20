@@ -15,7 +15,7 @@ class LanggananController extends Controller
     public function index()
     {
         return view('langganan.index', [
-            'langganan' => Langganan::all(),
+            'langganan' => Langganan::latest()->paginate(3),
             'title' => 'Data Langganan'
         ]);
     }

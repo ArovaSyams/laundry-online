@@ -15,7 +15,7 @@ class StatusController extends Controller
     public function index()
     {
         return view('status.index', [
-            'status' => Status::all(),
+            'status' => Status::latest()->paginate(3),
             'title' => 'Data Status'
         ]);
     }

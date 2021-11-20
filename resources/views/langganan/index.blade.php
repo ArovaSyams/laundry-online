@@ -64,6 +64,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="mt-2">
+                        {{ $langganan->links() }}
+                    </div>
                 </div>
             </div>
         </div>

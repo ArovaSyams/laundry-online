@@ -33,6 +33,7 @@ class TokoSeeder extends Seeder
                 'hari_kerja_sampai' => 'Sabtu',
                 'jam_buka_mulai' => '08.00',
                 'jam_buka_sampai' => '18.00',
+                'created_at' => now()
             ],
             [
                 'nama_toko' => 'Jago Laundry',
@@ -52,6 +53,7 @@ class TokoSeeder extends Seeder
                 'hari_kerja_sampai' => 'Sabtu',
                 'jam_buka_mulai' => '08.00',
                 'jam_buka_sampai' => '18.00',
+                'created_at' => now()
             ],
             [
                 'nama_toko' => 'Sicepat Laundry',
@@ -71,6 +73,27 @@ class TokoSeeder extends Seeder
                 'hari_kerja_sampai' => 'Sabtu',
                 'jam_buka_mulai' => '08.00',
                 'jam_buka_sampai' => '18.00',
+                'created_at' => now()
+            ],
+            [
+                'nama_toko' => 'Silambat Laundry',
+                'user_id' => 2,
+                'alamat' => 'Jln. Hibrida 8 No. 13A kel. Sidomulyo Kec. Gading Cempaka Kota Bengkulu',
+                'provinsi' => 'Jakarta',
+                'kota' => 'Jakarta',
+                'kecamatan' => 'Gading Cempaka',
+                'kelurahan' => 'Sidomulyo',
+                'foto_1' => 'asdasdads.jpg',
+                'foto_2' => 'asdasdads.jpg',
+                'foto_3' => 'asdasdads.jpg',
+                'deskripsi' => 'toko sriwijaya laundry menjamin cucian anda bersih dan wangi dalam waktu singkat.',
+                'metode_penjualan' => 'Kiloan',
+                'harga' => 'Rp 10.000 / Kilo',
+                'hari_kerja_mulai' => 'Senin',
+                'hari_kerja_sampai' => 'Sabtu',
+                'jam_buka_mulai' => '08.00',
+                'jam_buka_sampai' => '18.00',
+                'created_at' => now()
             ],
         ]);
     }

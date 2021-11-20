@@ -16,7 +16,7 @@ class TokoController extends Controller
     public function index()
     {
         return view('toko.index', [
-            'toko' => Toko::all(),
+            'toko' => Toko::latest()->paginate(3),
             'title' => 'Data Toko'
         ]);
     }
