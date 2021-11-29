@@ -57,7 +57,7 @@
                                             <form action="/status/{{ $s->id }}" method="post"
                                                 style="display: inline-block">
                                                 @csrf
-                                                <input type="hidden" name="_method" value="DELETE">
+                                                @method(DELETE)
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
 

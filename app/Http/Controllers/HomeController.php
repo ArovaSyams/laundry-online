@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Langganan;
 use App\Models\Order;
 use App\Models\Status;
 use App\Models\Toko;
@@ -15,10 +16,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -27,7 +28,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'title' => 'Beranda',
+            'toko' => Toko::all()
+        ]);
+    }
+
+    public function userHome()
+    {
+        // $s=0;
+        // if(Order::select('tanggal_jadi') === null) {
+        //     $s=1;
+        // }
+        // dd();
+        return view('userhome', [
+            'title' => 'Profil',
+            'langganan' =>Langganan::all(),
+            'order' => Order::all(),
+            // 'orderLalu' => Order::where('tanggal_jadi', !null)->get()
+        ]);
     }
     
     public function adminHome()

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -33,6 +34,8 @@ class UserController extends Controller
             'nama' => 'required|max:255',
             'email' => 'required|max:255',
             'password' => 'required|max:255',
+            'jenis_kelamin' => 'required|max:255',
+            'no_telp' => 'required|max:255',
             'tanggal_lahir' => 'required|max:255',
             'alamat' => 'required',
             'provinsi' => 'required|max:255',
@@ -54,6 +57,8 @@ class UserController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => $request->password,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_telp' => $request->no_telp,
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat' => $request->alamat,
             'provinsi' => $request->provinsi,
@@ -66,6 +71,7 @@ class UserController extends Controller
 
         return redirect('user');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -90,10 +96,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|max:255',
             'password' => 'required|max:255',
+            'jenis_kelamin' => 'required|max:255',
+            'no_telp' => 'required|max:255',
             'tanggal_lahir' => 'required|max:255',
             'alamat' => 'required',
             'provinsi' => 'required|max:255',
@@ -103,6 +111,92 @@ class UserController extends Controller
             'point' => 'required',
         ]);
 
+        // $foto = $request->file('foto');
+        // // cek foto lama
+        // if (!$foto) {
+        //     $namaFoto = $request->foto_lama;
+        // } else {
+
+        //     $namaFoto = $foto->hashName();
+        //     $foto->move('img', $namaFoto);
+
+        //     if ($request->foto_lama !== 'default.jpg') {
+        //         unlink('img/' . $request->foto_lama);
+        //     }
+        // } 
+
+        User::find($id)->update([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_telp' => $request->no_telp,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'point' => $request->point,
+            // 'foto' => $namaFoto
+        ]);
+
+        return redirect('user');
+    }
+
+    // update data diri
+    public function updateDataDiri(Request $request, $id) 
+    {
+        $request->validate([
+            'nama' => 'required|max:255',
+            'email' => 'required|max:255',
+            'jenis_kelamin' => 'required|max:255',
+            'no_telp' => 'required|max:255',
+            'tanggal_lahir' => 'required|max:255',
+        ]);
+
+        User::find($id)->update([
+            'nama' => $request->nama,
+            'email' => $request->email,            
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'no_telp' => $request->no_telp,
+            'tanggal_lahir' => $request->tanggal_lahir,
+        ]);   
+
+        return redirect()->back();
+    
+    }
+
+    // update alamat
+    public function updateAlamat(Request $request, $id) 
+    {
+        $request->validate([
+            'alamat' => 'required',
+            'provinsi' => 'required|max:255',
+            'kota' => 'required|max:255',
+            'kecamatan' => 'required|max:255',
+            'kelurahan' => 'required|max:255',
+        ]);
+
+        User::find($id)->update([
+            'alamat' => $request->alamat,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+        ]);
+        
+
+        return redirect('userhome');
+    
+    }
+
+    // Update Foto
+    public function updateFoto(Request $request) 
+    {
+        // $request->validate([
+
+        // ])
         $foto = $request->file('foto');
         // cek foto lama
         if (!$foto) {
@@ -117,21 +211,11 @@ class UserController extends Controller
             }
         } 
 
-        User::find($id)->update([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'password' => $request->password,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'alamat' => $request->alamat,
-            'provinsi' => $request->provinsi,
-            'kota' => $request->kota,
-            'kecamatan' => $request->kecamatan,
-            'kelurahan' => $request->kelurahan,
-            'point' => $request->point,
+        User::find(Auth::user()->id)->update([
             'foto' => $namaFoto
         ]);
 
-        return redirect('user');
+        return redirect()->back();
     }
 
     /**

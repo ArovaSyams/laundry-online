@@ -17,6 +17,7 @@ class CreateTokosTable extends Migration
             $table->id();
             $table->string('nama_toko');
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('no_telp');
             $table->string('alamat');
             $table->string('provinsi');
             $table->string('kota');
@@ -26,6 +27,7 @@ class CreateTokosTable extends Migration
             $table->string('foto_2')->nullable();
             $table->string('foto_3')->nullable();
             $table->longText('deskripsi');
+            $table->integer('rating');
             $table->string('metode_penjualan');
             $table->string('harga');
             $table->string('hari_kerja_mulai');

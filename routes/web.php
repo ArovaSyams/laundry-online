@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\OrderController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -20,9 +22,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 // user CRUD
 Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('admin');
@@ -30,8 +30,14 @@ Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/user/{id}', [UserController::class, 'edit'])->name('user')->middleware('admin');
 Route::post('/user/{id}', [UserController::class, 'update']);
+Route::post('/userfoto/{id}', [UserController::class, 'updateFoto']);
+Route::post('/user-datadiri/{id}', [UserController::class, 'updateDataDiri']);
+Route::post('/user-alamat/{id}', [UserController::class, 'updateAlamat']);
 
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+// // reset password
+Route::post('/password/update/{id}', [ResetPasswordController::class, 'reset']);
 
 // TOKO CRUD
 Route::get('/toko', [TokoController::class, 'index'])->name('toko')->middleware('admin');
@@ -79,9 +85,8 @@ Route::post('/langganan/{id}', [LanggananController::class, 'update']);
 Route::delete('/langganan/{id}', [LanggananController::class, 'destroy']);
 
 
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('user');
+Route::get('/userhome', [App\Http\Controllers\HomeController::class, 'userHome'])->name('user')->middleware('auth');
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin')->middleware('admin');

@@ -42,7 +42,7 @@ class OrderSeeder extends Seeder
                 'total' => 20.000,
                 'waktu_pengambilan' => 'Pagi',
                 'tanggal_pemesanan' => 1222-10-10,
-                'tanggal_jadi' => 1222-10-10,
+                'tanggal_jadi' => NULL,
                 'created_at' => now()
             ],
             [
