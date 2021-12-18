@@ -23,27 +23,27 @@ class ResetPasswordController extends Controller
     |
     */
 
-    use ResetsPasswords;
+    // use ResetsPasswords;
 
     /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
     public function reset(Request $request, $id)
     {
         
         $request->validate([
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|confirmed'
         ]);
 
         User::find($id)->update([
             'password' => Hash::make($request->password)
         ]);
 
-
-        return redirect()->back();
+        
+        return redirect()->back()->with('pesan', 'Password berhasil di ubah');
     }
 
 }

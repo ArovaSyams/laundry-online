@@ -20,6 +20,11 @@
         </div>
     </div> --}}
     <section class="" style="margin-top: 100px">
+        @if (session()->has('pesan'))
+        <div class="alert alert-success" role="alert">
+            {{ session()->get('pesan') }}
+        </div>
+        @endif
         <div class="row">
             <div class="col col-md-3">
                 <div class="card">
@@ -38,7 +43,7 @@
                             <h5>Profil Saya</h5>
                             <ul class="lh-lg" style="list-style: none">
                                 <li id="biodataDiriBtn" style="cursor: pointer">Biodata Diri</li>
-                                <li id="daftarAlamatBtn" style="cursor: pointer">Alamat</li>
+                                <li id="daftarAlamatBtn" style="cursor: pointer">Daftar Alamat</li>
                                 <li id="keamananBtn" style="cursor: pointer">Keamanan</li>
                                 <li id="tokoFollowBtn" style="cursor: pointer">Toko Yang Diikuti</li>
                             </ul>
@@ -203,10 +208,42 @@
                         <div id="daftarAlamat" class="d-none">
                             <div class="row">
                                 <div class="col">
-                                    <h4>Alamat</h4>
+                                    <h4>Daftar Alamat</h4>
                                     <hr>
+                                    <a href="" class="btn btn-success mb-3">Tambah Alamat</a>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Alamat</th>
+                                                <th>Provinsi</th>
+                                                <th>Kota</th>
+                                                <th>Kecamatan</th>
+                                                <th>Kelurahan</th>
+                                                <th>No. Telp</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($alamat as $l)
+                                            <tr>
+                                                <td>{{ $l->id }}</td>
+                                                <td>{{ $l->user->nama }}</td>
+                                                <td>{{ $l->alamat }}</td>
+                                                <td>{{ $l->provinsi }}</td>
+                                                <td>{{ $l->kota }}</td>
+                                                <td>{{ $l->kecamatan }}</td>
+                                                <td>{{ $l->kelurahan }}</td>
+                                                <td>{{ $l->no_telp }}</td>
+                                                
+                                            </tr>
+                                            @endforeach
+                                            
+                                        </tbody>
+                                    </table>
 
-                                    <form action="/user-alamat/{{ Auth::user()->id }}" method="POST">
+
+                                    {{-- <form action="/user-alamat/{{ Auth::user()->id }}" method="POST">
                                         @csrf
                                         <table class="table">
                                             <tbody>
@@ -268,7 +305,7 @@
                                             </tbody>
                                         </table>
                                         <button type="submit" class="btn btn-success">Edit</button>
-                                    </form>
+                                    </form> --}}
                                       
                                 </div>
                             </div>

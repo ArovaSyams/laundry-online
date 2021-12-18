@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alamat;
 use App\Models\Langganan;
 use App\Models\Order;
 use App\Models\Status;
@@ -45,6 +46,7 @@ class HomeController extends Controller
             'title' => 'Profil',
             'langganan' =>Langganan::all(),
             'order' => Order::all(),
+            'alamat' => Alamat::all()
             // 'orderLalu' => Order::where('tanggal_jadi', !null)->get()
         ]);
     }

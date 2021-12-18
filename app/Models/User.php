@@ -58,4 +58,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Status::class);
     }
+    public function alamat() 
+    {
+        return $this->hasMany(Alamat::class);
+    }
 }

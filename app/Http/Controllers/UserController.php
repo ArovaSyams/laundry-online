@@ -163,7 +163,7 @@ class UserController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
         ]);   
 
-        return redirect()->back();
+        return redirect()->back()->with('pesan', 'Profil berhasil diubah');
     
     }
 
