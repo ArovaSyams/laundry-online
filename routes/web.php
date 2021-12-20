@@ -8,6 +8,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,11 @@ Route::get('/user/{id}', [UserController::class, 'edit'])->name('user')->middlew
 Route::post('/user/{id}', [UserController::class, 'update']);
 Route::post('/userfoto/{id}', [UserController::class, 'updateFoto']);
 Route::post('/user-datadiri/{id}', [UserController::class, 'updateDataDiri']);
-Route::post('/user-alamat/{id}', [UserController::class, 'updateAlamat']);
+
+Route::post('/user-alamat', [UserController::class, 'updateAlamat']);
+Route::post('/user-tambah-alamat', [UserController::class, 'tambahAlamat']);
+Route::delete('/delete-alamat/{id}', [AlamatController::class, 'destroy']);
+
 
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
 

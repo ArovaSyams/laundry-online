@@ -102,9 +102,9 @@ class AlamatController extends Controller
      * @param  \App\Models\Alamat  $alamat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alamat $alamat)
+    public function destroy($id)
     {
-        Alamat::find($alamat)->delete();
-        return redirect()->back();
+        Alamat::find($id)->delete();
+        return redirect()->back()->with('pesan', 'Alamat berhasil dihapus');
     }
 }

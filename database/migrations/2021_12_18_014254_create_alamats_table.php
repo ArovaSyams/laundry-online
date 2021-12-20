@@ -23,6 +23,7 @@ class CreateAlamatsTable extends Migration
             $table->string('kecamatan')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('no_telp')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -208,104 +208,237 @@
                         <div id="daftarAlamat" class="d-none">
                             <div class="row">
                                 <div class="col">
-                                    <h4>Daftar Alamat</h4>
-                                    <hr>
-                                    <a href="" class="btn btn-success mb-3">Tambah Alamat</a>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Alamat</th>
-                                                <th>Provinsi</th>
-                                                <th>Kota</th>
-                                                <th>Kecamatan</th>
-                                                <th>Kelurahan</th>
-                                                <th>No. Telp</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($alamat as $l)
-                                            <tr>
-                                                <td>{{ $l->id }}</td>
-                                                <td>{{ $l->user->nama }}</td>
-                                                <td>{{ $l->alamat }}</td>
-                                                <td>{{ $l->provinsi }}</td>
-                                                <td>{{ $l->kota }}</td>
-                                                <td>{{ $l->kecamatan }}</td>
-                                                <td>{{ $l->kelurahan }}</td>
-                                                <td>{{ $l->no_telp }}</td>
-                                                
-                                            </tr>
-                                            @endforeach
-                                            
-                                        </tbody>
-                                    </table>
-
-
-                                    {{-- <form action="/user-alamat/{{ Auth::user()->id }}" method="POST">
-                                        @csrf
+                                    <div id="daftarAlamat2">
+                                        <h4>Daftar Alamat</h4>
+                                        <hr>
+                                        <button id="tambahAlamatBtn" class="btn btn-success mb-3">Tambah Alamat</button>
                                         <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama</th>
+                                                    <th>Alamat</th>
+                                                    <th>Provinsi</th>
+                                                    <th>Kota</th>
+                                                    <th>Kecamatan</th>
+                                                    <th>Kelurahan</th>
+                                                    <th>No. Telp</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
+                                                @foreach ($alamat as $l)
+                                                
                                                 <tr>
-                                                    <td scope="row">Provinsi</td>
-                                                    <td>
-                                                        <input type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="" value="{{ Auth::user()->provinsi }}">
-                                                        @error('provinsi')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">Kota</td>
-                                                    <td>
-                                                        <input type="text" class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="" value="{{ Auth::user()->kota }}">
-                                                        @error('kota')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">Kecamatan</td>
-                                                    <td>
-                                                        <input type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" id="kecamatan" placeholder="" value="{{ Auth::user()->kecamatan }}">
-                                                        @error('kecamatan')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">Kelurahan</td>
-                                                    <td>
-                                                        <input type="text" class="form-control @error('kelurahan') is-invalid @enderror" name="kelurahan" id="kelurahan" placeholder="" value="{{ Auth::user()->kelurahan }}">
-                                                        @error('kelurahan')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td scope="row">Alamat</td>
-                                                    <td>
-                                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="" value="{{ Auth::user()->alamat }}">
-                                                        @error('alamat')
-                                                        <div class="invalid-feedback">
-                                                            {{ $message }}
-                                                        </div>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
+                                                        <td>{{ $l->nama }}</td>
+                                                        <td>{{ $l->alamat }}</td>
+                                                        <td>{{ $l->provinsi }}</td>
+                                                        <td>{{ $l->kota }}</td>
+                                                        <td>{{ $l->kecamatan }}</td>
+                                                        <td>{{ $l->kelurahan }}</td>
+                                                        <td>{{ $l->no_telp }}</td>
+                                                        <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#editAlamatModal" 
+                                                            data-id="{{ $l->id }}"
+                                                            data-nama="{{ $l->nama }}"
+                                                            data-alamat="{{ $l->alamat }}"
+                                                            data-provinsi="{{ $l->provinsi }}"
+                                                            data-kota="{{ $l->kota }}"
+                                                            data-kecamatan="{{ $l->kecamatan }}"
+                                                            data-kelurahan="{{ $l->kelurahan }}"
+                                                            data-notelp="{{ $l->no_telp }}"
+                                                        ><i class="fas fa-edit    "></i></button>
+
+                                                        <form action="/delete-alamat/{{ $l->id }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger mt-1"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                        </form>
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                
+                                                @endforeach
+                                                
                                             </tbody>
                                         </table>
-                                        <button type="submit" class="btn btn-success">Edit</button>
-                                    </form> --}}
+                                    </div>
+
+                                    <div class="modal fade" id="editAlamatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Alamat</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="/user-alamat">
+                                                @csrf
+                                                <input id="id" name="id" type="hidden">
+                                                <div class="mb-3">
+                                                    <label for="nama" class="form-label">Nama</label>
+                                                    <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="" value="{{ old('nama') }}">
+                                                    @error('nama')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>  
+                                                <div class="mb-3">
+                                                    <label for="alamat" class="form-label">Alamat</label>
+                                                    <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="" value="{{ old('alamat') }}">
+                                                    @error('alamat')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="provinsi" class="form-label">Provinsi</label>
+                                                    <input id="provinsi" type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="" value="{{ old('provinsi') }}">
+                                                    @error('provinsi')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>  
+            
+                                                <div class="mb-3">
+                                                    <label for="kota" class="form-label">Kota</label>
+                                                    <input id="kota" type="text" class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="" value="{{ old('kota') }}">
+                                                    @error('kota')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                        
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="kecamatan" class="form-label">Kecamatan</label>
+                                                    <input id="kecamatan" type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" id="kecamatan" placeholder="" value="{{ old('kecamatan') }}">
+                                                    @error('kecamatan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="kelurahan" class="form-label">Kelurahan</label>
+                                                    <input id="kelurahan" type="text" class="form-control @error('kelurahan') is-invalid @enderror" name="kelurahan" id="kelurahan" placeholder="" value="{{ old('kelurahan') }}">
+                                                    @error('kelurahan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                
+                                                
+                                                <div class="mb-3">
+                                                    <label for="no_telp" class="form-label">no_telp</label>
+                                                    <input id="notelp" type="text" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp"
+                                                        name="no_telp" placeholder="masukkan no_telp" value="{{ old('no_telp') }}">
+                                                    @error('no_telp')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Edit</button>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <div id="daftarAlamat3" class="d-none">   
+                                        <h4>Tambah Alamat</h4>
+                                        <hr>
+                                        <button id="backTambahAlamat" class="btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                                        <form method="POST" action="/user-tambah-alamat">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="nama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="" value="{{ old('nama') }}">
+                                                @error('nama')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>  
+                                            <div class="mb-3">
+                                                <label for="alamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="" value="{{ old('alamat') }}">
+                                                @error('alamat')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="provinsi" class="form-label">Provinsi</label>
+                                                <input type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="" value="{{ old('provinsi') }}">
+                                                @error('provinsi')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>  
+        
+                                            <div class="mb-3">
+                                                <label for="kota" class="form-label">Kota</label>
+                                                <input type="text" class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="" value="{{ old('kota') }}">
+                                                @error('kota')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                    
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <label for="kecamatan" class="form-label">Kecamatan</label>
+                                                <input type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" id="kecamatan" placeholder="" value="{{ old('kecamatan') }}">
+                                                @error('kecamatan')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="kelurahan" class="form-label">Kelurahan</label>
+                                                <input type="text" class="form-control @error('kelurahan') is-invalid @enderror" name="kelurahan" id="kelurahan" placeholder="" value="{{ old('kelurahan') }}">
+                                                @error('kelurahan')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                            
+                                            
+                                            <div class="mb-3">
+                                                <label for="no_telp" class="form-label">no_telp</label>
+                                                <input type="text" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp"
+                                                    name="no_telp" placeholder="masukkan no_telp" value="{{ old('no_telp') }}">
+                                                @error('no_telp')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                    </form>
+                                    </div>
+
+
+                                    
                                       
                                 </div>
                             </div>

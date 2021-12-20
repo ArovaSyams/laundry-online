@@ -4,6 +4,11 @@
 const biodataDiriBtn = document.getElementById('biodataDiriBtn');
 
 const daftarAlamatBtn = document.getElementById('daftarAlamatBtn');
+const tambahAlamatBtn = document.getElementById('tambahAlamatBtn');
+const backTambahAlamatBtn = document.getElementById('backTambahAlamatBtn');
+const daftarAlamat2 = document.getElementById('daftarAlamat2');
+const daftarAlamat3 = document.getElementById('daftarAlamat3');
+
 const keamananBtn = document.getElementById('keamananBtn');
 const tokoFollowBtn = document.getElementById('tokoFollowBtn');
 // pemesanan btn
@@ -51,6 +56,15 @@ const profilTokoBack = document.getElementById('profilTokoBack');
 
 const dalamProsesPemesananToko = document.getElementById('dalamProsesPemesananToko');
 const daftarPesanan = document.getElementById('daftarPesanan');
+
+tambahAlamatBtn.addEventListener('click', function () {
+    daftarAlamat2.classList.toggle('d-none');
+    daftarAlamat3.classList.toggle('d-none');
+})
+backTambahAlamat.addEventListener('click', function () {
+    daftarAlamat2.classList.toggle('d-none');
+    daftarAlamat3.classList.toggle('d-none');
+})
 
 statusBtn.addEventListener('click', function () {
     statusPemesanan.classList.remove('d-none')
