@@ -27,7 +27,7 @@ class CreateTokosTable extends Migration
             $table->string('foto_2')->nullable();
             $table->string('foto_3')->nullable();
             $table->longText('deskripsi');
-            $table->integer('rating');
+            $table->integer('rating')->nullable();
             $table->string('metode_penjualan');
             $table->string('harga');
             $table->string('hari_kerja_mulai');

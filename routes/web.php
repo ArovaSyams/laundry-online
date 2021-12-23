@@ -34,11 +34,6 @@ Route::post('/user/{id}', [UserController::class, 'update']);
 Route::post('/userfoto/{id}', [UserController::class, 'updateFoto']);
 Route::post('/user-datadiri/{id}', [UserController::class, 'updateDataDiri']);
 
-Route::post('/user-alamat', [UserController::class, 'updateAlamat']);
-Route::post('/user-tambah-alamat', [UserController::class, 'tambahAlamat']);
-Route::delete('/delete-alamat/{id}', [AlamatController::class, 'destroy']);
-
-
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
 
 // // reset password
@@ -88,6 +83,19 @@ Route::get('/langganan/{id}', [LanggananController::class, 'edit'])->name('langg
 Route::post('/langganan/{id}', [LanggananController::class, 'update']);
 
 Route::delete('/langganan/{id}', [LanggananController::class, 'destroy']);
+
+// -----PAGE-----
+
+Route::post('/user-alamat', [AlamatController::class, 'update']);
+Route::post('/user-tambah-alamat', [AlamatController::class, 'store']);
+Route::delete('/delete-alamat/{id}', [AlamatController::class, 'destroy']);
+
+// Toko Page
+Route::get('/toko-user', [HomeController::class, 'tokoUser']);
+
+Route::get('/profiltoko/{id}', [HomeController::class, 'profilToko']);
+
+
 
 
 Auth::routes();

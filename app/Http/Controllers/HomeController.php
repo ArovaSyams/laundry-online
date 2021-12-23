@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alamat;
+use App\Models\Komentar;
 use App\Models\Langganan;
 use App\Models\Order;
 use App\Models\Status;
@@ -63,6 +64,24 @@ class HomeController extends Controller
             'tokoc' =>Toko::count(),
             'orderc' =>Order::count(),
             'statusc' =>Status::count(),
+        ]);
+    }
+
+    // user toko
+    public function tokoUser() 
+    {
+        return view('tokouser', [
+            'toko' => Toko::all()
+        ]);
+    }
+
+    // profil toko
+
+    public function profilToko($id) 
+    {
+        return view('pages.profiltoko', [
+            'toko' => Toko::find($id),
+            'komentar' => Komentar::where('toko_id', $id)->get()
         ]);
     }
 }

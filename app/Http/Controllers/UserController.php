@@ -168,66 +168,6 @@ class UserController extends Controller
     
     }
 
-    // tambah alamat
-    public function tambahAlamat(Request $request) 
-    {
-        $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'provinsi' => 'required|max:255',
-            'kota' => 'required|max:255',
-            'kecamatan' => 'required|max:255',
-            'kelurahan' => 'required|max:255',
-            'no_telp' => 'required',
-        ]);
-
-        Alamat::create([
-            'user_id' => Auth::user()->id,
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'provinsi' => $request->provinsi,
-            'kota' => $request->kota,
-            'kecamatan' => $request->kecamatan,
-            'kelurahan' => $request->kelurahan,
-            'no_telp' => $request->no_telp,
-        ]);
-        
-
-        return redirect('userhome')->with('pesan', 'Alamat berhasil ditambahkan');
-    
-    }
-
-    // update alamat
-    public function updateAlamat(Request $request) 
-    {
-        $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'provinsi' => 'required|max:255',
-            'kota' => 'required|max:255',
-            'kecamatan' => 'required|max:255',
-            'kelurahan' => 'required|max:255',
-            'no_telp' => 'required',
-        ]);
-
-        $id = $request->id;
-
-        Alamat::find($id)->update([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'provinsi' => $request->provinsi,
-            'kota' => $request->kota,
-            'kecamatan' => $request->kecamatan,
-            'kelurahan' => $request->kelurahan,
-            'no_telp' => $request->no_telp,
-
-        ]);
-        
-
-        return redirect('userhome')->with('pesan', 'Alamat berhasil diedit');
-    
-    }
-
     // Update Foto
     public function updateFoto(Request $request) 
     {

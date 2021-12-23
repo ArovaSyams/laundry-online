@@ -34,9 +34,10 @@
                         @foreach ($toko as $t)
                             <div class="col col-md-3">
                                 <div class="card">
-                                    <img src="/dist/img/photo1.png" class="card-img-top" alt="...">
+                                    <a href="/profiltoko/{{ $t->id }}"><img src="/dist/img/photo1.png" class="card-img-top" alt="..."></a>
+
                                     <div class="card-body">
-                                        <h5 class=" fw-normal fs-4">{{ $t->nama_toko }}</h5>
+                                        <a href="/profiltoko/{{ $t->id }}" ><h5 class=" fw-normal fs-4">{{ $t->nama_toko }}</h5></a>
                                         @for ($i = 0; $i < $t->rating; $i++)
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         @endfor

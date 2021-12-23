@@ -17,7 +17,7 @@ class CreateKomentarsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('toko_id')->references('id')->on('tokos');
-            $table->string('rating');
+            $table->integer('rating');
             $table->longText('komentar');
             $table->timestamps();
         });

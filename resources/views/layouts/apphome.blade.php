@@ -122,6 +122,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i>&nbsp;{{ Auth::user()->nama }}</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="/userhome">Profil</a>
+                            <a class="dropdown-item" href="/toko-user">Toko</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -173,8 +174,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="/dist/js/adminlte.min.js"></script>
 
-    <script src="/dist/js/app.js"></script>
     <script src="/dist/js/modal.js"></script>
+    <script src="/dist/js/app.js"></script>
+    <script src="/dist/js/toko.js"></script>
 </body>
 
 </html>

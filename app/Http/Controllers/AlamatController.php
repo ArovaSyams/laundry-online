@@ -4,29 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Alamat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlamatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -35,41 +17,29 @@ class AlamatController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'required',
-            'alamat' => 'required|max:255',
-            'provinsi' => 'required',
-            'kota' => 'required',
-            'kecamatan' => 'required',
-            'kelurahan' => 'required',
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'provinsi' => 'required|max:255',
+            'kota' => 'required|max:255',
+            'kecamatan' => 'required|max:255',
+            'kelurahan' => 'required|max:255',
             'no_telp' => 'required',
-            
         ]);
 
-        Alamat::create($validatedData);
-        return redirect()->back();
-    }
+        Alamat::create([
+            'user_id' => Auth::user()->id,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'no_telp' => $request->no_telp,
+        ]);
+        
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Alamat  $alamat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alamat $alamat)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Alamat  $alamat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Alamat $alamat)
-    {
-        //
+        return redirect('userhome')->with('pesan', 'Alamat berhasil ditambahkan');
     }
 
     /**
@@ -79,21 +49,33 @@ class AlamatController extends Controller
      * @param  \App\Models\Alamat  $alamat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alamat $alamat)
+    public function update(Request $request)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'required',
-            'alamat' => 'required|max:255',
-            'provinsi' => 'required',
-            'kota' => 'required',
-            'kecamatan' => 'required',
-            'kelurahan' => 'required',
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'provinsi' => 'required|max:255',
+            'kota' => 'required|max:255',
+            'kecamatan' => 'required|max:255',
+            'kelurahan' => 'required|max:255',
             'no_telp' => 'required',
-            
         ]);
 
-        Alamat::find($alamat)->update($validatedData);
-        return redirect()->back();
+        $id = $request->id;
+
+        Alamat::find($id)->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'no_telp' => $request->no_telp,
+
+        ]);
+        
+
+        return redirect('userhome')->with('pesan', 'Alamat berhasil diedit');
     }
 
     /**

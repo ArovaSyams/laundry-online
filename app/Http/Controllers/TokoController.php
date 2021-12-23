@@ -33,6 +33,7 @@ class TokoController extends Controller
             'nama_toko' => 'required|max:255',
             'user_id' => 'required|max:255',
             'alamat' => 'required',
+            'no_telp' => 'required',
             'provinsi' => 'required|max:255',
             'kota' => 'required|max:255',
             'kecamatan' => 'required|max:255',
@@ -72,6 +73,7 @@ class TokoController extends Controller
         Toko::create([
             'nama_toko' => $request->nama_toko,
             'user_id' => $request->user_id,
+            'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'provinsi' => $request->provinsi,
             'kota' => $request->kota,
@@ -89,7 +91,7 @@ class TokoController extends Controller
             'jam_buka_sampai' => $request->jam_buka_sampai
         ]);
 
-        return redirect('toko');
+        return redirect()->back()->with('pesan', 'Toko berhasil ditambah');
     }   
 
     /**
