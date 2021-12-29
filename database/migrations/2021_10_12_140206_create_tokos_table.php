@@ -32,8 +32,8 @@ class CreateTokosTable extends Migration
             $table->string('harga');
             $table->string('hari_kerja_mulai');
             $table->string('hari_kerja_sampai');
-            $table->string('jam_buka_mulai');
-            $table->string('jam_buka_sampai');
+            $table->time('jam_buka_mulai');
+            $table->time('jam_buka_sampai');
             $table->timestamps();
         });
     }

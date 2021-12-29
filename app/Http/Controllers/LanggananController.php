@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Langganan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LanggananController extends Controller
 {
@@ -90,7 +91,7 @@ class LanggananController extends Controller
      */
     public function destroy($id)
     {
-        Langganan::find($id)->delete();
+        Langganan::where('user_id', Auth::user()->id)->where('toko_id', $id)->delete();
         
         return redirect('langganan');
     }

@@ -206,8 +206,8 @@
                                                         id="metode_penjualan" name="metode_penjualan">
                                                         <option selected value="{{ old('metode_penjualan') }}">Metode
                                                             Penjualan</option>
-                                                        <option value="Kiloan">Kiloan</option>
-                                                        <option value="Bijian">Bijian</option>
+                                                        <option value="Kilo">Kiloan</option>
+                                                        <option value="Biji">Bijian</option>
                                                     </select>
                                                     @error('metode_penjualan')
                                                         <div class="invalid-feedback">
@@ -220,7 +220,7 @@
                                                     <label for="harga" class="form-label">harga</label>
                                                     <input type="text"
                                                         class="form-control @error('harga') is-invalid @enderror"
-                                                        id="harga" name="harga" placeholder="10.000 Per Kilo"
+                                                        id="harga" name="harga" placeholder="10.000"
                                                         value="{{ old('harga') }}">
                                                     @error('harga')
                                                         <div class="invalid-feedback">
@@ -315,8 +315,8 @@
                                             @foreach ($toko->where('user_id', Auth::user()->id) as $t)
                                             <tr>
                                                 <td>{{ $t->nama_toko }}</td>
-                                                <td><button type="button" class="btn btn-success"
-                                                        id="profilBtn">Profil</button></td>
+                                                <td><a href="profiltoko-owner/{{ $t->id }}" type="button" class="btn btn-success"
+                                                        id="profilBtn">Profil</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

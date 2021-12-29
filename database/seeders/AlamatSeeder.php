@@ -23,7 +23,9 @@ class AlamatSeeder extends Seeder
                 'kota' => 'Tulung Agung',
                 'kecamatan' => 'Gading Cempaka',
                 'kelurahan' => 'Sidomulyo',
-                'no_telp' => '08139284938'
+                'no_telp' => '08139284938',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'user_id' => 2,
@@ -33,7 +35,9 @@ class AlamatSeeder extends Seeder
                 'kota' => 'Tulung Agung',
                 'kecamatan' => 'Gading Cempaka',
                 'kelurahan' => 'Sidomulyo',
-                'no_telp' => '08139284938'
+                'no_telp' => '08139284938',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }

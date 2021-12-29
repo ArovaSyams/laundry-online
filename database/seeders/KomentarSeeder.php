@@ -19,25 +19,33 @@ class KomentarSeeder extends Seeder
                 'user_id' => 2,
                 'toko_id' => 1,
                 'rating' => 5,
-                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'user_id' => 3,
                 'toko_id' => 1,
                 'rating' => 4,
-                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'user_id' => 2,
                 'toko_id' => 2,
                 'rating' => 5,
-                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'user_id' => 1,
                 'toko_id' => 3,
                 'rating' => 5,
-                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi'
+                'komentar' => 'pelayanan sangat bagus, jadi cepat, dengan pakaian yang bersih dan wangi',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
 
         ]);

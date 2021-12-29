@@ -10,6 +10,8 @@ use App\Http\Controllers\LanggananController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -92,6 +94,7 @@ Route::delete('/delete-alamat/{id}', [AlamatController::class, 'destroy']);
 
 // Toko Page
 Route::get('/toko-user', [HomeController::class, 'tokoUser']);
+Route::get('/profiltoko-owner/{id}', [HomeController::class, 'profilTokoOwner']);
 
 Route::get('/profiltoko/{id}', [HomeController::class, 'profilToko']);
 
@@ -99,6 +102,19 @@ Route::get('/profiltoko/{id}', [HomeController::class, 'profilToko']);
 
 
 Auth::routes();
+Route::post('/logout', function (Request $request) {
+
+    User::find(Auth::user()->id)->update([
+        'is_login' => 0
+    ]);
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+});
 
 Route::get('/userhome', [App\Http\Controllers\HomeController::class, 'userHome'])->name('user')->middleware('auth');
 

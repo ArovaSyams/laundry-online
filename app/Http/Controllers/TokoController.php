@@ -118,6 +118,7 @@ class TokoController extends Controller
      */
     public function update(Request $request, $id)
     {
+     
         
         $request->validate([
             'nama_toko' => 'required|max:255',
@@ -192,7 +193,7 @@ class TokoController extends Controller
             'jam_buka_sampai' => $request->jam_buka_sampai
         ]);
 
-        return redirect('toko');
+        return redirect()->back()->with('pesan', 'Data toko berhasil diupdate');
     }
 
     /**

@@ -28,7 +28,8 @@ class OrderSeeder extends Seeder
                 'waktu_pengambilan' => 'Pagi',
                 'tanggal_pemesanan' => 1222-10-10,
                 'tanggal_jadi' => 1222-10-10,
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'user_id' => 3,
@@ -43,7 +44,8 @@ class OrderSeeder extends Seeder
                 'waktu_pengambilan' => 'Pagi',
                 'tanggal_pemesanan' => 1222-10-10,
                 'tanggal_jadi' => NULL,
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'user_id' => 2,
@@ -58,7 +60,8 @@ class OrderSeeder extends Seeder
                 'waktu_pengambilan' => 'Pagi',
                 'tanggal_pemesanan' => 1222-10-10,
                 'tanggal_jadi' => 1222-10-10,
-                'created_at' => now()
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

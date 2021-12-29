@@ -229,8 +229,8 @@
                             <select class="form-select  @error('metode_penjualan') is-invalid @enderror"
                                 id="metode_penjualan" name="metode_penjualan">
                                 <option selected value="{{ old('metode_penjualan') }}">Metode Penjualan</option>
-                                <option value="Kiloan">Kiloan</option>
-                                <option value="Bijian">Bijian</option>
+                                <option value="Kilo">Kiloan</option>
+                                <option value="Biji">Bijian</option>
                             </select>
                             @error('metode_penjualan')
                                 <div class="invalid-feedback">
@@ -242,7 +242,7 @@
                         <div class="mb-3">
                             <label for="harga" class="form-label">harga</label>
                             <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga"
-                                name="harga" placeholder="10.000 Per Kilo" value="{{ old('harga') }}">
+                                name="harga" placeholder="10.000" value="{{ old('harga') }}">
                             @error('harga')
                                 <div class="invalid-feedback">
                                     {{ $message }}
