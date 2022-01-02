@@ -93,6 +93,6 @@ class LanggananController extends Controller
     {
         Langganan::where('user_id', Auth::user()->id)->where('toko_id', $id)->delete();
         
-        return redirect('langganan');
+        return redirect('langganan')->with('pesan', 'Berhasil berhenti mengikuti');
     }
 }

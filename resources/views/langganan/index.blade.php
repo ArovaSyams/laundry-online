@@ -49,13 +49,13 @@
                                         <td>{{ $l->toko->nama_toko }}</td>
 
                                         <td>
-                                            <a href="/langganan/{{ $l->id }}" class="btn btn-success">Edit</a>
+                                            <a href="/langganan/{{ $l->id }}" class="badge bg-success">Edit</a>
 
                                             <form action="/langganan/{{ $l->id }}" method="post"
                                                 style="display: inline-block">
                                                 @csrf
-                                                @method(DELETE)
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                @method('DELETE')
+                                                <button type="submit" class="badge bg-danger border-0">Hapus</button>
                                             </form>
 
                                         </td>

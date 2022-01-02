@@ -52,13 +52,13 @@
                                         <td>{{ $s->status }}</td>
 
                                         <td>
-                                            <a href="/status/{{ $s->id }}" class="btn btn-success">Edit</a>
+                                            <a href="/status/{{ $s->id }}" class="badge bg-success">Edit</a>
 
                                             <form action="/status/{{ $s->id }}" method="post"
                                                 style="display: inline-block">
                                                 @csrf
-                                                @method(DELETE)
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                @method('DELETE')
+                                                <button type="submit" class="badge bg-danger border-0">Hapus</button>
                                             </form>
 
                                         </td>

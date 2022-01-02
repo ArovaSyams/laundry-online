@@ -52,12 +52,14 @@
                                         <td>{{ $k->komentar }}</td>
 
                                         <td>
-                                            <a href="/komentar/{{ $k->id }}" class="btn btn-success">Edit</a>
+                                            
 
-                                            <form action="/komentar/{{ $k->id }}" method="post">
+                                            <a href="/komentar/{{ $k->id }}" class="badge bg-success">Edit</a>
+
+                                            <form action="/komentar/{{ $k->id }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="border-0 badge bg-danger">Hapus</button>
                                             </form>
 
                                         </td>

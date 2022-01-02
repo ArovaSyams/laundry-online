@@ -503,7 +503,7 @@
                                                 <td>{{ $l->toko->foto_1 }}</td>
                                                 <td>{{ $l->toko->nama_toko }}</td>
                                                 <td>
-                                                    <form action="/langganan/{{ $l->id }}" method="POST">
+                                                    <form action="/lax`ngganan/{{ $l->id }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Berhenti Mengikuti</button>

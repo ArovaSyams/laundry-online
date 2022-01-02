@@ -6,7 +6,16 @@
     <form method="POST" action="/toko/{{ $toko->id }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-        <a href="/toko-user" style="margin-top: 80px" class=" btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <a href="/toko-user" style="margin-top: 80px"  class=" btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        @if (session()->has('pesan'))
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+            {{ session()->get('pesan') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
         <div class="row" style="margin-top: 20px">
             {{-- Foto --}}
             <div class="col col-md-5" style="color: black;">

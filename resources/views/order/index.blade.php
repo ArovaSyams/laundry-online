@@ -68,12 +68,12 @@
                                         <td>{{ $o->tanggal_pemesanan }}</td>
                                         <td>{{ $o->tanggal_jadi }}</td>
                                         <td>
-                                            <a href="/order/{{ $o->id }}" class="btn btn-success">Edit</a>
+                                            <a href="/order/{{ $o->id }}" class="badge bg-success">Edit</a>
 
                                             <form action="/order/{{ $o->id }}" method="post">
                                                 @csrf
-                                                @method(DELETE)
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                @method('DELETE')
+                                                <button type="submit" class="badge bg-danger border-0">Hapus</button>
                                             </form>
 
                                         </td>

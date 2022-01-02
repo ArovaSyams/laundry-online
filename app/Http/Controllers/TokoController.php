@@ -186,7 +186,7 @@ class TokoController extends Controller
             'foto_3' => $namaFoto3,
             'deskripsi' => $request->deskripsi,
             'metode_penjualan' => $request->metode_penjualan,
-            'harga' => "Rp " . $request->harga,
+            'harga' => $request->harga,
             'hari_kerja_mulai' => $request->hari_kerja_mulai,
             'hari_kerja_sampai' => $request->hari_kerja_sampai,
             'jam_buka_mulai' => $request->jam_buka_mulai,

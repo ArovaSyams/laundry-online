@@ -23,7 +23,7 @@ class CreateTokosTable extends Migration
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('kelurahan');
-            $table->string('foto_1');
+            $table->string('foto_1')->nullable();
             $table->string('foto_2')->nullable();
             $table->string('foto_3')->nullable();
             $table->longText('deskripsi');

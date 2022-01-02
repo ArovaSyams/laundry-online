@@ -78,12 +78,12 @@
                                         <td>{{ $t->jam_buka_mulai }}</td>
                                         <td>{{ $t->jam_buka_sampai }}</td>
                                         <td>
-                                            <a href="/toko/{{ $t->id }}" class="btn btn-success">Edit</a>
+                                            <a href="/toko/{{ $t->id }}" class="badge bg-success">Edit</a>
 
                                             <form action="/toko/{{ $t->id }}" method="post" style="display: inline-block">
                                                 @csrf
-                                                @method(DELETE)
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                @method('DELETE')
+                                                <button type="submit" class="badge bg-danger border-0">Hapus</button>
                                             </form>
                                             {{-- <a href="/toko/delete/{{ $t->id }}" class="btn btn-danger">Hapus</a> --}}
                                             <p style="color: white">____________________</p>

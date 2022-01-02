@@ -102,19 +102,19 @@ Route::get('/profiltoko/{id}', [HomeController::class, 'profilToko']);
 
 
 Auth::routes();
-Route::post('/logout', function (Request $request) {
+// Route::post('/logout', function (Request $request) {
 
-    User::find(Auth::user()->id)->update([
-        'is_login' => 0
-    ]);
-    Auth::logout();
+//     User::find(Auth::user()->id)->update([
+//         'is_login' => 0
+//     ]);
+//     Auth::logout();
 
-    $request->session()->invalidate();
+//     $request->session()->invalidate();
 
-    $request->session()->regenerateToken();
+//     $request->session()->regenerateToken();
 
-    return redirect('/');
-});
+//     return redirect('/');
+// });
 
 Route::get('/userhome', [App\Http\Controllers\HomeController::class, 'userHome'])->name('user')->middleware('auth');
 

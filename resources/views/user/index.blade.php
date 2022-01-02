@@ -43,10 +43,7 @@
                                     <th>Role</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Alamat</th>
-                                    <th>Provinsi</th>
-                                    <th>kota</th>
-                                    <th>Kecamatan</th>
-                                    <th>Kelurahan</th>
+                                    
                                     <th>Point</th>
 
                                     <th>Aksi</th>
@@ -69,14 +66,11 @@
                                         <td>{{ $u->alamat }} 
                                             <p style="color: white">_______________________________________________________________________</p>
                                         </td>
-                                        <td>{{ $u->provinsi }}</td>
-                                        <td>{{ $u->kota }}</td>
-                                        <td>{{ $u->kecamatan }}</td>
-                                        <td>{{ $u->kelurahan }}</td>
+                                       
                                         <td>{{ $u->point }}</td>
 
                                         <td>
-                                            <a href="/user/{{ $u->id }}" class="btn btn-success">Edit</a>
+                                            <a href="/user/{{ $u->id }}" class="badge bg-success">Edit</a>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUserModal" 
                                         data-nama="{{ $u->nama }}"
                                         data-email="{{ $u->email }}"    
@@ -96,7 +90,7 @@
                                                 style="display: inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="badge bg-danger border-0">Hapus</button>
                                             </form>
                                             <p style="color: white">____________________</p>
                                         </td>

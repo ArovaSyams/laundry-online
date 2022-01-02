@@ -19,6 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="/dist/css/ownstyles.css">
+
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -30,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="/" class="navbar-brand">
                     <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle"
                         style="opacity: .8">
-                    <span class="brand-text font-weight-medium">Lapaklaundry</span>
+                    <span class="brand-text font-weight-medium">LapakLaundry</span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -155,11 +156,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
+            {{-- <div class="float-right d-none d-sm-inline">
                 Anything you want
-            </div>
+            </div> --}}
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            <strong>Copyright &copy; 2021 LapakLaundry</strong> All rights
             reserved.
         </footer>
     </div>

@@ -15,9 +15,9 @@ const buatToko = document.getElementById('buatToko');
 const buatTokoForm = document.getElementById('buatTokoForm');
 
 const daftarToko = document.getElementById('daftarToko');
-const daftarToko2 = document.getElementById('daftarToko2');
-const profilToko = document.getElementById('profilToko');
-const profilTokoBack = document.getElementById('profilTokoBack');
+// const daftarToko2 = document.getElementById('daftarToko2');
+// const profilToko = document.getElementById('profilToko');
+// const profilTokoBack = document.getElementById('profilTokoBack');
 
 const dalamProsesPemesananToko = document.getElementById('dalamProsesPemesananToko');
 const daftarPesanan = document.getElementById('daftarPesanan');
@@ -68,15 +68,15 @@ buatTokoBack.addEventListener('click', function () {
     buatTokoForm.classList.add('d-none')
 })
 
-profilBtn.addEventListener('click', function () {
-    daftarToko2.classList.add('d-none')
-    profilToko.classList.remove('d-none')
-})
+// profilBtn.addEventListener('click', function () {
+//     daftarToko2.classList.add('d-none')
+//     profilToko.classList.remove('d-none')
+// })
 
-profilTokoBack.addEventListener('click', function () {
-    daftarToko2.classList.remove('d-none')
-    profilToko.classList.add('d-none')
-})
+// profilTokoBack.addEventListener('click', function () {
+//     daftarToko2.classList.remove('d-none')
+//     profilToko.classList.add('d-none')
+// })
 
 
 // PROFIL TOKO
