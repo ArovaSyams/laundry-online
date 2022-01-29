@@ -1,4 +1,3 @@
-
 @extends('layouts.apphome')
 
 @section('content')
@@ -7,7 +6,27 @@
     <div class="row" style="margin-top: 100px">
         {{-- Foto --}}
         <div class="col col-md-5" style="color: black;">
-            <img src="/dist/img/photo1.png" class="rounded" width="100%" alt="">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="/dist/img/photo1.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/dist/img/photo2.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/dist/img/photo2.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+               <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </button>
+              </div>
             <div class="row mt-3">
                 <div class="col col-sm-4">
                     <img src="/dist/img/photo1.png" class="rounded" style="object-fit: cover" width="100%" alt="">
@@ -31,7 +50,7 @@
             </div>
             <h2 class="fw-bolder">Rp {{ $toko->harga }} / {{ $toko->metode_penjualan }}</h2>
             
-            <a href="" class="btn btn-success mt-3 mb-4">Pesan Jasa</a>
+            <a href="/pesan-jasa/{{ $toko->id }}" class="btn btn-success mt-3 mb-4">Pesan Jasa</a>
 
             <h4>Detail</h4>
             {{-- <hr class="border"> --}}
@@ -75,13 +94,13 @@
                     <p class="card-text text-muted">Aktif 20 menit yang lalu</p>
                 </div>
                 <div class="bd-highlight">
-                    <a href="" class="btn btn-primary">Kunjungi Owner</a>
+                    <a href="/profilowner/{{ $toko->id }}" class="btn btn-primary">Kunjungi Owner</a>
                     
                     @if ($follow)
                     <form action="/langganan/{{ $toko->id }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger ml-2">Unfollow</button>
+                        <button class="btn btn-danger ml-2">Unfollow toko</button>
                     </form>
                     @else
                         @if (Auth::user())
@@ -89,7 +108,7 @@
                             @csrf
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <input type="hidden" name="toko_id" value="{{ $toko->id }}">
-                            <button class="btn btn-success ml-2">follow</button>                        
+                            <button class="btn btn-success ml-2">follow toko</button>                        
                         </form>
                         @else
                         <a href="/login" class="btn btn-success ml-2">follow</a>                        

@@ -88,8 +88,8 @@ Route::delete('/langganan/{id}', [LanggananController::class, 'destroy']);
 
 // -----PAGE-----
 
-Route::post('/user-alamat', [AlamatController::class, 'update']);
 Route::post('/user-tambah-alamat', [AlamatController::class, 'store']);
+Route::post('/user-alamat/{id}', [AlamatController::class, 'update']);
 Route::delete('/delete-alamat/{id}', [AlamatController::class, 'destroy']);
 
 // Toko Page
@@ -97,6 +97,13 @@ Route::get('/toko-user', [HomeController::class, 'tokoUser']);
 Route::get('/profiltoko-owner/{id}', [HomeController::class, 'profilTokoOwner']);
 
 Route::get('/profiltoko/{id}', [HomeController::class, 'profilToko']);
+
+// profil owner
+Route::get('/profilowner/{id}', [HomeController::class, 'profilOwner']);
+
+Route::get('/pesan-jasa/{id}', [HomeController::class, 'pesanJasa']);
+
+
 
 
 

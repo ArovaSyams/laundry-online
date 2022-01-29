@@ -29,7 +29,7 @@ class CreateTokosTable extends Migration
             $table->longText('deskripsi');
             $table->integer('rating')->nullable();
             $table->string('metode_penjualan');
-            $table->string('harga');
+            $table->integer('harga');
             $table->string('hari_kerja_mulai');
             $table->string('hari_kerja_sampai');
             $table->time('jam_buka_mulai');

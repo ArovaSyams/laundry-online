@@ -11,6 +11,13 @@ class Toko extends Model
 
     protected $guarded = ['id'];
 
+    public function scopeFilter($query, array $filters) 
+    {
+        $query->when($filters['search-top'] ?? false, function ($query, $search) {
+            return $query->where('kota', 'like', '%' . $search . '%')->orWhere('nama_toko', 'like', '%' . $search . '%');
+        });
+    }
+
     public function komentar() 
     {
         return $this->hasMany(Komentar::class);

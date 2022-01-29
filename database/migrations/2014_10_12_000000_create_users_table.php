@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->date('tanggal_lahir');
             $table->integer('point')->default(0);
             $table->string('foto')->nullable();
-            $table->boolean('is_login')->default(0);
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

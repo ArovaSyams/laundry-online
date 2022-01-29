@@ -39,7 +39,7 @@ class AlamatController extends Controller
         ]);
         
 
-        return redirect('userhome')->with('pesan', 'Alamat berhasil ditambahkan');
+        return redirect()->back()->with('pesan', 'Alamat berhasil ditambahkan');
     }
 
     /**
