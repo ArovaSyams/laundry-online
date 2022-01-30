@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -29,6 +30,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validatedData = $request->validate([
             'user_id' => 'required|max:255',
             'toko_id' => 'required|max:255',
@@ -37,14 +39,20 @@ class OrderController extends Controller
             'kota' => 'required|max:255',
             'kecamatan' => 'required|max:255',
             'kelurahan' => 'required|max:255',
-            'jumlah_qty' => 'required|max:255',
-            'total' => 'required',
+            // 'jumlah_qty' => 'required|max:255',
+            // 'total' => 'required',
             'waktu_pengambilan' => 'required|max:255',
             'tanggal_pemesanan' => 'required',
-            'tanggal_jadi' => 'required',
+            // 'tanggal_jadi' => 'required',
         ]);
 
         Order::create($validatedData);
+        Status::create([
+            'user_id' => $request->user_id,
+            'toko_id' => $request->toko_id,
+            'status' => 'Menunggu Konfirmasi'
+        ]);
+
         return redirect('order');
     }
 

@@ -50,7 +50,12 @@
             </div>
             <h2 class="fw-bolder">Rp {{ $toko->harga }} / {{ $toko->metode_penjualan }}</h2>
             
+
+            @if (Auth::user())
             <a href="/pesan-jasa/{{ $toko->id }}" class="btn btn-success mt-3 mb-4">Pesan Jasa</a>
+            @else
+            <a href="/login" class="btn btn-success mt-3 mb-4">Pesan Jasa</a>            
+            @endif
 
             <h4>Detail</h4>
             {{-- <hr class="border"> --}}

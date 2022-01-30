@@ -34,18 +34,37 @@
                     <div class="card-body">
                         
                         
-                        <p>{{ Auth::user()->nama }} ({{ Auth::user()->no_telp }})</p>
                         @if (!$alamat)
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                             Tambah Alamat
                         </button>
                         @else
                         
-                        <p class="text-muted">Kel. {{ $alamat->kelurahan }}, Kec. {{ $alamat->kecamatan }}, Kab. {{ $alamat->kota }}, Prov. {{ $alamat->provinsi }} <br> {{ $alamat->alamat }}</p>
+                        @if (request('daftar-alamat'))
+                        <div class="d-flex bd-highlight mb-3">
+                            <div class="me-auto p-2 bd-highlight">
+                                <p>{{ $alamat->first()->nama }} ({{ $alamat->first()->no_telp }})</p>
+                                <p class="text-muted">Kel. {{ $alamat->first()->kelurahan }}, Kec. {{ $alamat->first()->kecamatan }}, Kab. {{ $alamat->first()->kota }}, Prov. {{ $alamat->first()->provinsi }} <br> {{ $alamat->first()->alamat }}</p>
+                            </div>
+
+                            <div class="p-2 bd-highlight">
+                                <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#daftarAlamat">
+                                    Pilih Alamat
+                                </button>
+                            </div>                            
+                        </div>
+                        @else
+                        <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#daftarAlamat">
+                            Pilih Alamat
+                        </button>
+
+                        @endif
                         
+                        <form action="/order" method="post">
+                        @csrf
                         <div class="mb-3">
                             <label for="nama" class="fw-normal">Tanggal Pemesanan</label>
-                            <input type="date" class="form-control @error('nama') is-invalid @enderror"id="nama" name="nama">
+                            <input type="date" class="form-control @error('nama') is-invalid @enderror"id="nama" name="tanggal_pemesanan">
                             @error('nama')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -55,11 +74,11 @@
 
                         <div class="mb-3">
                             <label for="nama" class="fw-normal">Waktu Pengambilan</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" name="waktu_pengambilan">
                                 <option selected>Pilih waktu</option>
-                                <option value="1">Pagi ({{ $toko->jam_buka_mulai }} - 10:00)</option>
-                                <option value="2">Siang (10:00 - 14:00)</option>
-                                <option value="3">Sore (14:00 - {{ $toko->jam_buka_sampai }})</option>
+                                <option value="Pagi">Pagi ({{ $toko->jam_buka_mulai }} - 10:00)</option>
+                                <option value="Siang">Siang (10:00 - 14:00)</option>
+                                <option value="Sore">Sore (14:00 - {{ $toko->jam_buka_sampai }})</option>
                             </select>
                             @error('nama')
                                 <div class="invalid-feedback">
@@ -67,10 +86,20 @@
                                 </div>
                             @enderror
                         </div>
+
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="toko_id" value="{{ $toko->id }}">
+                            <input type="hidden" name="alamat" value="{{ $alamat->first()->alamat }}">
+                            <input type="hidden" name="provinsi" value="{{ $alamat->first()->provinsi }}">
+                            <input type="hidden" name="kota" value="{{ $alamat->first()->kota }}">
+                            <input type="hidden" name="kecamatan" value="{{ $alamat->first()->kecamatan }}">
+                            <input type="hidden" name="kelurahan" value="{{ $alamat->first()->kelurahan }}">
+                            
+                            <button type="submit" class="btn btn-success">Pesan Sekarang</button>
+                        </form>
                         
                         @endif
 
-                        <!-- Button trigger modal -->
                         
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -167,9 +196,58 @@
                             </div>
                         </div>
 
+ 
+                        <!-- Modal -->
+                        <div class="modal fade" id="daftarAlamat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Pilih Alamat</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                @foreach ($daftar_alamat as $alamat)
+
+                                <div class="card">
+                                    <div class="p-3">
+                                        <div class="d-flex bd-highlight mb-3">
+
+                                            <div class="me-auto p-2 bd-highlight">    
+                                                <p>{{ $alamat->nama }} ({{ $alamat->no_telp }})</p>
+                                                <p class="text-muted">Kel. {{ $alamat->kelurahan }}, Kec. {{ $alamat->kecamatan }}, Kab. {{ $alamat->kota }}, Prov. {{ $alamat->provinsi }} <br> {{ $alamat->alamat }}</p>
+                                            </div>
+
+                                            <div class="p-2 bd-highlight">
+                                                <form action="/pesan-jasa/{{ $toko->id }}" method="get">
+                                                    <input type="hidden" name="daftar-alamat" value="{{ $alamat->id }}">
+                                                    <button class="btn btn-info">Pilih</button>    
+                                                </form>
+                                            </div>                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                                    
+                                @endforeach
+
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                                    Tambah Alamat
+                                </button>
+
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+  
+
 
                     </div>
                 </div>
+
+
 
             </div>
 

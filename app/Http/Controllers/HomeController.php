@@ -149,11 +149,19 @@ class HomeController extends Controller
 
     public function pesanJasa($id) 
     {
-        // dd(Alamat::where('user_id', Auth::user()->id)->first());
+
+        if (request('daftar-alamat')) {
+            $alamat = Alamat::where('user_id', Auth::user()->id)->where('id', request('daftar-alamat'));
+            // $alamat = Alamat::where('id', request('daftar-alamat'));
+        } else {
+            $alamat = Alamat::where('user_id', Auth::user()->id);
+        }
+        
         return view('pages.pesanjasa', [
             'title' => 'Pesan Jasa ' . Toko::find($id)->nama_toko,
             'toko' => Toko::find($id),
-            'alamat' => Alamat::where('user_id', Auth::user()->id)->first()
+            'alamat' => $alamat,
+            'daftar_alamat' => Alamat::where('user_id', Auth::user()->id)->get()
         ]);
     }
 }
