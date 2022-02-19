@@ -30,7 +30,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $validatedData = $request->validate([
             'user_id' => 'required|max:255',
             'toko_id' => 'required|max:255',
@@ -39,11 +38,11 @@ class OrderController extends Controller
             'kota' => 'required|max:255',
             'kecamatan' => 'required|max:255',
             'kelurahan' => 'required|max:255',
-            // 'jumlah_qty' => 'required|max:255',
-            // 'total' => 'required',
+            'jumlah_qty' => 'max:255',
+            'total' => 'max:255',
             'waktu_pengambilan' => 'required|max:255',
             'tanggal_pemesanan' => 'required',
-            // 'tanggal_jadi' => 'required',
+            'tanggal_jadi' => 'max:255',
         ]);
 
         Order::create($validatedData);
@@ -53,7 +52,7 @@ class OrderController extends Controller
             'status' => 'Menunggu Konfirmasi'
         ]);
 
-        return redirect('order');
+        return redirect('userhome');
     }
 
     /**

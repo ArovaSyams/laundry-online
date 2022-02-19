@@ -49,13 +49,13 @@
 
                             <div class="p-2 bd-highlight">
                                 <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#daftarAlamat">
-                                    Pilih Alamat
+                                    Pilih Alamat &rightarrow;
                                 </button>
                             </div>                            
                         </div>
                         @else
                         <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#daftarAlamat">
-                            Pilih Alamat
+                            Pilih Alamat &rightarrow;
                         </button>
 
                         @endif
